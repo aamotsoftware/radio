@@ -2,9 +2,9 @@
  *
  * GNOME Radio
  *
- * Copyright (C) 2021, 2022  Aamot Software
+ * Copyright (C) 2021, 2022, 2025  Aamot Research
  *
- * Author: Ole Aamot <ole@gnome.org>
+ * Author: Ole Aamot <ole@aamot.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -623,7 +623,7 @@ gnome_radio_window_cb (GtkApplication *app,
 	gtk_container_add (GTK_CONTAINER(window), GTK_WIDGET(grid));
 	g_signal_connect (window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 #endif
-	gtk_window_set_title (GTK_WINDOW(window), _("Radio 48.2 - http://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
+	gtk_window_set_title (GTK_WINDOW(window), _("Radio 49.0 - http://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
 	gtk_window_set_default_size (GTK_WINDOW(window), 800, 600);
 	gtk_window_maximize (GTK_WINDOW (window));
 	gnome_radio_app = create_gnome_radio_app();
@@ -810,7 +810,7 @@ static void activate(GtkApplication *app, gpointer user_data)
 	/* give the window a 10px wide border */
 	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
 	/* give it the title */
-	gtk_window_set_title (GTK_WINDOW (window), _("Radio 48.2 - http://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
+	gtk_window_set_title (GTK_WINDOW (window), _("Radio 49.0 - http://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
 	/* Connect the destroy event of the window with our on_destroy function
 	 * When the window is about to be destroyed we get a notificaiton and
 	 * stop the main GTK loop
@@ -847,7 +847,7 @@ static void activate(GtkApplication *app, gpointer user_data)
 	license_actor = champlain_view_get_license_actor (view);
 	champlain_license_set_extra_text (license_actor, "Public Internet Radio");
 	/* FIXME: University of Southern California */
-	champlain_view_center_on (CHAMPLAIN_VIEW (view), 37.7579202,-115.6319846);
+	champlain_view_center_on (CHAMPLAIN_VIEW (view), 44.5079609, -73.1534229);
 	
 	// location = gclue_simple_get_location (simple);
 	

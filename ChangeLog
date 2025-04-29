@@ -1,3 +1,117 @@
+commit 38e1b92eda206b2e21b808ea125d2c18ac311091
+Author: Ole K. Aamot <o.k.aamot@fys.uio.no>
+Date:   Sat Mar 1 22:05:57 2025 +0100
+
+    GNOME Radio version 48.4 (gnome-radio)
+
+ ChangeLog                                | 6293 ++++++++++++++++++++++++++++--
+ Makefile                                 |   28 +-
+ Makefile.in                              |    2 +-
+ NEWS                                     |   10 +
+ README                                   |    2 +-
+ configure                                |   20 +-
+ configure.ac                             |    2 +-
+ gnome-radio.spec                         |    5 +-
+ gnome-radio.spec.in                      |    3 +
+ src/gnome-radio-markers.c                |   15 +-
+ src/gnome-radio-station.h                |    2 +
+ src/gnome-radio.c                        |    4 +-
+ src/gnome-radio.h                        |    2 +
+ src/gnome-radio.xml                      |    8 +-
+ src/gtk-internet-radio-locator-markers.c |   12 +
+ src/gtk-radio-markers.c                  |   12 +
+ src/gtk-radio.xml                        |    8 +-
+ src/internet-radio-locator.xml           |    8 +-
+ 18 files changed, 6023 insertions(+), 413 deletions(-)
+
+commit 728ed7c444d04fb94e6e952da5e4ce4a3d943081
+Author: Ole K. Aamot <o.k.aamot@fys.uio.no>
+Date:   Sat Feb 22 17:09:53 2025 +0100
+
+    GNOME Radio version 48.3 (gnome-radio)
+
+ ChangeLog                                     | 6142 ++-----------------------
+ INSTALL                                       |  477 +-
+ Makefile                                      |   84 +-
+ Makefile.in                                   |   62 +-
+ NEWS                                          |  221 +
+ aclocal.m4                                    |  564 ++-
+ autom4te.cache/output.1                       |  561 +--
+ autom4te.cache/output.2                       |  561 +--
+ autom4te.cache/output.3                       |  561 +--
+ autom4te.cache/traces.1                       | 1210 +++--
+ autom4te.cache/traces.2                       | 2133 +++++----
+ autom4te.cache/traces.3                       | 2132 +++++----
+ compile                                       |   11 +-
+ config.guess                                  |   11 +-
+ config.h                                      |   16 +-
+ config.log                                    | 1341 +++---
+ config.status                                 |  115 +-
+ config.sub                                    |  729 +--
+ configure                                     | 2022 +++-----
+ configure.ac                                  |    2 +-
+ data/Makefile                                 |   91 +-
+ data/Makefile.in                              |   37 +-
+ data/icons/Makefile                           |  409 +-
+ data/icons/Makefile.in                        |   33 +-
+ depcomp                                       |   15 +-
+ doc/Makefile.in                               |   33 +-
+ gnome-radio.spec                              |   10 +
+ gnome-radio.spec.in                           |   10 +
+ gtk/.deps/org_gnome_Radio-org.gnome.Radio.Po  | 1745 ++++++-
+ gtk/Makefile                                  |   66 +-
+ gtk/Makefile.in                               |   50 +-
+ gtk/org.gnome.Radio.xml                       |    8 +-
+ help/C/version.xml                            |    2 +-
+ help/Makefile                                 |   76 +-
+ help/Makefile.in                              |   26 +-
+ install-sh                                    |   10 +-
+ libtool                                       |    6 +-
+ ltmain.sh                                     |  732 ++-
+ m4/libtool.m4                                 |  462 +-
+ m4/ltoptions.m4                               |  106 +-
+ m4/ltsugar.m4                                 |    2 +-
+ m4/ltversion.m4                               |   12 +-
+ m4/lt~obsolete.m4                             |    2 +-
+ man/Makefile                                  |   64 +-
+ man/Makefile.in                               |   33 +-
+ missing                                       |   75 +-
+ po/Makefile                                   |   17 +-
+ po/Makefile.in                                |    8 +-
+ po/POTFILES                                   |    9 +
+ src/.deps/gtk_radio-gtk-radio-gui.Po          | 1509 +++++-
+ src/.deps/gtk_radio-gtk-radio-listener.Po     |    4 +-
+ src/.deps/gtk_radio-gtk-radio-markers.Po      | 2254 ++++++++-
+ src/.deps/gtk_radio-gtk-radio-player.Po       | 1772 ++++++-
+ src/.deps/gtk_radio-gtk-radio-program.Po      |    4 +-
+ src/.deps/gtk_radio-gtk-radio-runners.Po      |    4 +-
+ src/.deps/gtk_radio-gtk-radio-station.Po      | 1544 ++++++-
+ src/.deps/gtk_radio-gtk-radio-stations-map.Po |    4 +-
+ src/.deps/gtk_radio-gtk-radio-streams.Po      |    4 +-
+ src/.deps/gtk_radio-gtk-radio-tz.Po           |  359 +-
+ src/.deps/gtk_radio-gtk-radio.Po              | 2287 ++++++++-
+ src/Makefile                                  | 1021 +++-
+ src/Makefile.am                               |    7 +-
+ src/Makefile.in                               |  105 +-
+ src/gnome-radio-gui.c                         |    2 +-
+ src/gnome-radio-location.c                    |    4 +-
+ src/gnome-radio-markers.c                     |    4 +-
+ src/gnome-radio-radius.c                      |    4 +-
+ src/gnome-radio-station.c                     |    4 +-
+ src/gnome-radio-tz.c                          |    4 +-
+ src/gnome-radio.c                             |    8 +-
+ src/gnome-radio.xml                           |    8 +-
+ src/gtk-internet-radio-locator-gui.c          |    4 +-
+ src/gtk-internet-radio-locator-station.c      |    4 +-
+ src/gtk-internet-radio-locator-tz.c           |    4 +-
+ src/gtk-internet-radio-locator.c              |    4 +-
+ src/gtk-radio-550.3.dtd                       |   23 +
+ src/gtk-radio-station.c                       |    4 +-
+ src/gtk-radio.c                               |    2 +-
+ src/gtk-radio.xml                             | 1964 ++++++++
+ src/internet-radio-locator.xml                |    8 +-
+ 80 files changed, 21114 insertions(+), 14923 deletions(-)
+
 commit 3f8ad604fcb0caea2835dea8f767141e893f3ace
 Author: Ole Aamot <ole@aamot.org>
 Date:   Fri Jan 24 15:09:39 2025 +0100

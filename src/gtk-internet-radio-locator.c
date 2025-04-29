@@ -2,9 +2,9 @@
  *
  * GTK Internet Radio Locator for GTK 4
  *
- * Copyright (C) 2014, 2015, 2016, 2017, 2018, 2022  Aamot Software
+ * Copyright (C) 2014, 2015, 2016, 2017, 2018, 2022, 2025  Aamot Research
  *
- * Author: Ole Aamot <ole@gnome.org>
+ * Author: Ole Aamot <ole@aamot.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -795,7 +795,7 @@ main (int argc,
 
 	license_actor = champlain_view_get_license_actor (view);
 	champlain_license_set_extra_text (license_actor, "Public Internet Radio");
-	champlain_view_center_on (CHAMPLAIN_VIEW (view), 37.7579202,-115.6319846);
+	champlain_view_center_on (CHAMPLAIN_VIEW (view), 44.5079609, -73.1534229);
 	layer = create_marker_layer (view, &path);
 	champlain_view_add_layer (view, CHAMPLAIN_LAYER (path));
 	champlain_view_add_layer (view, CHAMPLAIN_LAYER (layer));

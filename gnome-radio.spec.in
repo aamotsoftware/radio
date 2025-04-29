@@ -27,6 +27,8 @@ Requires:       gtk3 >= 3.24.34
 Requires:       geoclue2 >= 2.5.7
 Provides:       gnome-internet-radio-locator = 16.0.6
 Obsoletes:      gnome-internet-radio-locator < 16.0.6
+Provides:       gtk-radio = 550.3
+Obsoletes:      gtk-radio < 550.3
 
 %description
 
@@ -67,12 +69,26 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/gnome-radio.xml
 %{_metainfodir}/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/gtk-radio/gtk-radio-550.3.dtd
+%{_datadir}/gtk-radio/gtk-radio.xml
 %{_datadir}/gtk-internet-radio-locator/internet-radio-locator-48.0.dtd
 %{_datadir}/gtk-internet-radio-locator/internet-radio-locator.xml
 %{_datadir}/icons/hicolor/scalable/apps/gnome-radio.svg
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sun Mar 02 2025 Ole Aamot <ole@aamot.org> - 49.0-1
+- Initial gnome-radio 49.0 with Vermont Public Radio (Vermont, United States of America)
+
+* Thu Feb 27 2025 Ole Aamot <ole@aamot.org> - 48.4-1
+- Initial gnome-radio 48.4 with Radio 102 (Haugesund, Norway) and Radio Haugaland (Haugaland, Norway)
+
+* Sat Feb 22 2025 Ole Aamot <ole@aamot.org> - 48.3-1
+- Initial gnome-radio 48.3 with Free Internet Radio Stations
+
+* Sat Feb 22 2025 Ole Aamot <ole@aamot.org> - 48.20250222-1
+- Initial gnome-radio 48.20250222 with Free Radio Stations
+
 * Wed Jan 22 2025 Ole Aamot <ole@aamot.org> - 48.20250122-1
 - Initial gnome-radio 48.20250122 with Radio Folgefonn (Norway)
 

@@ -1,6 +1,35 @@
 <?xml-stylesheet type="text/xsl" href="http://www.gnomeradio.org/~ole/radio/gnome-radio.xsl" ?>
 <!DOCTYPE gnome_radio SYSTEM "gnome-radio-48.0.dtd">
-<gnome_radio version="48.20250122">
+<gnome_radio version="49.0">
+  <station band="Online" id="vermontpublicradio" name="Vermont Public Radio" rank="1.0" type="org">
+    <location>Vermont, United States of America</location>
+    <description lang="en_US">Vermont Public is independent, community-supported media, serving Vermont with trusted, relevant and essential information. We share stories that bring people together.
+
+    We produce independent, local, award-winning news, music and programming that connect our audiences with issues, ideas and each other. We provide access to trusted content from NPR, PBS, and other national producers. And we offer educational programs and resources for educators and families.
+
+    Our programming and services are broadly available for free on our statewide radio and television broadcast networks, digital platforms, social media and in communities throughout our region.
+
+    Vermont Public was created in 2021 when Vermont Public Radio and Vermont PBS merged into a unified public media organization. We are an independent, locally owned and operated community licensee, which means that our license is owned by the community, not a governmental agency. Our primary source of funding — more than half — comes from more than 40,000 members making donations in all amounts.
+
+    If you’re new to Vermont Public, welcome! You can engage with our work in many different ways. Whether you listen live, read online, are a newsletter subscriber or a podcast listener — we're here for you.
+Our vision is a Vermont public informed, engaged and inspired to create our future.
+
+    Our mission is to broaden and diversify our audience through relevant, trusted information and stories that bring people and communities together.</description>
+    <stream mime="audio/mpeg" uri="https://vpr.streamguys1.com:443/vpr96.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="48000 Hz" bitrate="96 kbps" />
+    <uri>https://www.vermontpublic.org/</uri>
+  </station>
+  <station band="Online" id="radio102" name="Radio 102" rank="1.0" type="com">
+    <location>Haugesund, Norway</location>
+    <description lang="nb">Radio 102 er en av Norges største lokalradiostasjoner med nedslagsfelt i Haugesund, Karmøy og omliggende kommuner. Radio 102 er et aksjeselskap som er heleid av Mediehuset Haugesunds Avis. Kanalen gir deg daglige oppdateringer på trafikk, underholdning, kultur, sport og lokale nyheter. Radio102 startet opp som lokalradio på Eide i Kopervik i 1985, før de senere fikk lokaler på Vorrå like nord for byen. Etter at Mediehuset Haugesunds Avis kjøpte opp Radio102 flyttet de ut av Kopervik og Karmøy, og ble samlokalisert med resten av Mediehuset i Haugesund.</description>
+    <stream mime="audio/mpeg" uri="https://stream.radio102.no/radio102_hq" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="48000 Hz" bitrate="192 kbps" />
+    <uri>https://www.radio102.no/</uri>
+  </station>
+  <station band="Online" id="radiosotra" name="Radio Sotra" rank="1.0" type="com">
+    <location>Sotra, Norway</location>
+    <description lang="nb">Din lokalradio på Sotra. Du finner oss på 104,5MHz, 105,5MHz og 100,9MHz.</description>
+    <stream mime="audio/mpeg" uri="https://streaming.radiosotra.no:8443/radiosotra" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="48000 Hz" bitrate="127 kbps" />
+    <uri>https://www.radiosotra.no/</uri>
+  </station>
   <station band="Online" id="radiofolgefonn" lang="nn_NO" name="Radio Folgefonn" rank="1.0" type="com">
     <frequency uri="https://www.radiofolgefonn.no/">Online in Norway</frequency>
     <location>Norway</location>
@@ -193,7 +222,7 @@ In 1998, CBS merged with the international department of the Broadcasting Corpor
     <stream mime="audio/mpeg" uri="https://rfahls-i.akamaihd.net/hls/live/226232/RFALive_3/index.m3u8" codec="MPEG-4 AAC" samplerate="16000 Hz" bitrate="47 kbps" />
     <uri>https://www.rfa.org/</uri>
   </station>
-  <station band="Online" id="nrkp1pluss" name="NRK P1+" rank="1.0" type="gov">
+  <station band="Online" id="nrkp1pluss" name="NRK P1+" rank="1.0" type="gov" latitude="60" longitude="10">
     <location>Oslo, Norway</location>
     <description lang="nb">NRK P1+ er en av NRKs radiokanaler, som sendes på DAB og som nettradiokanal. NRK P1+ startet sine sendinger 2. oktober 2013 som en del av NRKs heldigitale radiotilbud og radiokanelen erstattet NRK Gull. Av de første programlederne har vært Viggo Valle, Kari Sørbø, Hanne Hoftun, Erik Forfod og Hans-Petter Jacobsen.</description>
     <stream mime="audio/mpeg" uri="http://cdn0-47115-liveicecast0.dna.contentdelivery.net:80/p1pluss_aac_h" codec="MPEG-4 AAC" samplerate="48000 Hz" bitrate="125 kbps" />

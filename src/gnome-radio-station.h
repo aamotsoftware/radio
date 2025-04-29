@@ -59,6 +59,8 @@ struct _GNOMERadioStationInfo {
 	gchar *uri;
 	gchar *lang;
         gchar *category;
+        double latitude;
+        double longitude;
 	GNOMERadioStreamsInfo *stream;
 	GNOMERadioStationInfo *next;
 	GNOMERadioStationInfo *prev;

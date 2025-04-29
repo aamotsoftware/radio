@@ -97,6 +97,11 @@ gtk_radio_CFLAGS  = $(GTK_RADIO_CFLAGS) \
 
 gtk_radio_LDADD = $(GTK_RADIO_LIBS)
 
+
+gtkradiodir = $(datadir)/gtk-radio
+
+gtkradio_DATA = gtk-radio-550.3.dtd gtk-radio.xml
+
 gtk_internet_radio_locator_SOURCES = \
 	gtk-internet-radio-locator-gui.c \
 	gtk-internet-radio-locator-gui.h \
@@ -138,7 +143,7 @@ gtkinternetradiolocatordir = $(datadir)/gtk-internet-radio-locator
 
 gtkinternetradiolocator_DATA = internet-radio-locator-48.0.dtd internet-radio-locator.xml
 
-EXTRA_DIST = gnome-radio.h gnome-radio-archive.h gnome-radio-encoder.h gnome-radio-location.h gnome-radio-player.h gnome-radio-keys.h gnome-radio-markers.h gnome-radio-player-kb.h gnome-radio-player-resource.h gnome-radio-radius.h gnome-radio-station.h gnome-radio-stations-map.h gnome-radio-tz.h gnome-radio-gui.h gnome-radio-listener.h gnome-radio-program.h gnome-radio-runners.h gnome-radio-streams.h gnome-radio-48.0.dtd gnome-radio.xml gnome-radio.xsl gnome-radio.gresource.xml internet-radio-locator-48.0.dtd internet-radio-locator.xml
+EXTRA_DIST = gnome-radio.h gnome-radio-archive.h gnome-radio-encoder.h gnome-radio-location.h gnome-radio-player.h gnome-radio-keys.h gnome-radio-markers.h gnome-radio-player-kb.h gnome-radio-player-resource.h gnome-radio-radius.h gnome-radio-station.h gnome-radio-stations-map.h gnome-radio-tz.h gnome-radio-gui.h gnome-radio-listener.h gnome-radio-program.h gnome-radio-runners.h gnome-radio-streams.h gnome-radio-48.0.dtd gnome-radio.xml gnome-radio.xsl gnome-radio.gresource.xml gtk-radio-550.3.dtd gtk-radio.xml internet-radio-locator-48.0.dtd internet-radio-locator.xml
 
 LDADD = $(GNOME_RADIO_LIBS) $(GTK_RADIO_LIBS)
 

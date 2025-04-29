@@ -153,6 +153,8 @@ struct _GNOMERadioInfo {
 	gint stream_count;
 	GMainLoop *player_loop;
 	GMainLoop *record_loop;  
+        double latitude;
+        double longitude;
 };
 
 typedef struct _GNOMERadioInfo GNOMERadioInfo;
