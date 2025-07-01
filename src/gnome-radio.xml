@@ -1,6 +1,6 @@
 <?xml-stylesheet type="text/xsl" href="http://www.gnomeradio.org/~ole/radio/gnome-radio.xsl" ?>
 <!DOCTYPE gnome_radio SYSTEM "gnome-radio-48.0.dtd">
-<gnome_radio version="49.0">
+<gnome_radio version="50.1">
   <station band="Online" id="vermontpublicradio" name="Vermont Public Radio" rank="1.0" type="org">
     <location>Vermont, United States of America</location>
     <description lang="en_US">Vermont Public is independent, community-supported media, serving Vermont with trusted, relevant and essential information. We share stories that bring people together.
@@ -1433,6 +1433,27 @@ WUMR has been the University of Memphis broadcasting outlet since 1979, when Sou
     <description lang="en">radiOrakel is the worlds oldest female run, feminist radio. Founded in 1982, radiOrakel has produced experimental radio-journalism, innovative comedy, and serious radio dramas for almost 40 years. Broadcasting on FM 99,3 in Norway, radiOrakel prides themselvs on having a queer agenda and standing up for inclusive feminism, making them a unique radio-experience for all types of listeners. Their music-profile covers anything and everything, from fringe punk to hardhitting country, and vibing techno-beats, with focus on female and queer artists.</description>
     <stream mime="audio/mpeg" uri="https://stream.radiorakel.no/fm993.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" channels="Stereo" bitrate="128 kbps" />
     <uri>http://radiorakel.no/</uri>
+  </station>
+  <station band="101.4FM" id="hamarradioen1014" name="HamarRadioen" rank="1.0" type="com">
+    <frequency uri="http://www.hamarradioen.no/">FM 101.4 in Stange, Norge</frequency>
+    <location>Stange, Norge</location>
+    <description lang="nb_NO">HamarRadioen er lokalradioen for hele Hamar-regionen. Du hører oss på FM 101.4, FM 107.4 og FM 107</description>
+    <stream mime="audio/mpeg" uri="https://lyd.radioene.no/hamar.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+    <uri>https://www.hamarradioen.no/</uri>
+  </station>
+  <station band="107.4FM" id="hamarradioen1074" name="HamarRadioen" rank="1.0" type="com">
+    <frequency uri="http://www.hamarradioen.no/">FM 107.4 in Hamar, Norge</frequency>
+    <location>Hamar, Norge</location>
+    <description lang="nb_NO">HamarRadioen er lokalradioen for hele Hamar-regionen. Du hører oss på FM 101.4, FM 107.4 og FM 107</description>
+    <stream mime="audio/mpeg" uri="https://lyd.radioene.no/hamar.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+    <uri>https://www.hamarradioen.no/</uri>
+  </station>
+  <station band="107FM" id="hamarradioen107" name="HamarRadioen" rank="1.0" type="com">
+    <frequency uri="http://www.hamarradioen.no/">FM 107 in Ringsaker, Norge</frequency>
+    <location>Ringsaker, Norge</location>
+    <description lang="nb_NO">HamarRadioen er lokalradioen for hele Hamar-regionen. Du hører oss på FM 101.4, FM 107.4 og FM 107</description>
+    <stream mime="audio/mpeg" uri="https://lyd.radioene.no/hamar.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+    <uri>https://www.hamarradioen.no/</uri>
   </station>
   <station band="88.5FM" id="kcsn" name="KCSN" rank="1.0" type="edu">
     <frequency uri="http://www.kcsn.org/">88.5 FM in Los Angeles, California</frequency>

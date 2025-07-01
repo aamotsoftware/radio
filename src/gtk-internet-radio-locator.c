@@ -999,7 +999,7 @@ main (int argc,
 	return 0;
 #if 0
 	
-	app = gtk_application_new ("org.gnome.gtk-internet-radio-locator", G_APPLICATION_FLAGS_NONE);
+	app = gtk_application_new ("org.gnomeradio.gtk-internet-radio-locator", G_APPLICATION_FLAGS_NONE);
 
 	g_signal_connect (app, "activate", G_CALLBACK (gtk_internet_radio_locator_window_cb), NULL);
 	

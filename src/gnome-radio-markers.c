@@ -78,7 +78,7 @@ marker_function (ChamplainMarker *self,
 		 ClutterEvent    *event,
 		 gpointer         user_data)
 {
-        gchar *station, *station_link;
+	gchar *station, *station_link;
 	gchar *markup;
 	guint context_id;
 	station = (gchar *)champlain_label_get_text (CHAMPLAIN_LABEL (self));
@@ -88,7 +88,7 @@ marker_function (ChamplainMarker *self,
 	player = gst_player_new (NULL, gst_player_g_main_context_signal_dispatcher_new(NULL));
 	stationdata = gnome_radio_station_load_from_file(localstation, world_station_xml_filename);
 	while (stationdata != NULL) {
-	         if (strcasecmp(stationdata->location, station_link)==0) {
+		if (strcasecmp(stationdata->location, station_link)==0) {
 			gchar *statusmsg = g_strconcat(stationdata->name, " (", stationdata->uri, ") in ", stationdata->location, " (", stationdata->band, ", ", g_strdup_printf("%li", stationdata->stream->samplerate), " Hz, ", g_strdup_printf("%li", stationdata->stream->bitrate), " kbps)", NULL);
 			gnome_radio_player_new(GST_PLAYER(player), stationdata->stream->uri);
 			context_id = gtk_statusbar_get_context_id (GTK_STATUSBAR (statusbar), "Station Name");
@@ -482,13 +482,24 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 	   )); */
 	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press",
 			 G_CALLBACK(marker_function), station);
-	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);	
+	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
 	station = g_strdup("Guatemala City, Guatemala\n<span size=\"small\">Radio Universidad</span>");
 	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
 	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
 	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_f_color);
 	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
 	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 14.6417889, -90.5132239);
+	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
+	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
+	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
+	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
+	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
+	station = g_strdup("Hamar, Norge\n<span size=\"small\">HamarRadioen 107.4</span>");
+	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
+	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
+	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_g_color);
+	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
+	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 60.7950209, 11.0699037);
 	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
 	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
@@ -835,6 +846,17 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
 	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
 	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
+	station = g_strdup("Ringsaker, Norge\n<span size=\"small\">HamarRadioen 107</span>");
+	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
+	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
+	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_g_color);
+	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
+	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 60.8845202, 10.9405073);
+	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
+	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
+	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
+	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
+	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
 	station = g_strdup("Rogaland, Norway\n<span size=\"small\">NRK P1 Rogaland</span>");
 	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
 	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
@@ -896,6 +918,17 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_f_color);
 	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
 	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 37.4248398, -122.1677058);
+	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
+	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
+	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
+	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
+	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
+	station = g_strdup("Stange, Norge\n<span size=\"small\">HamarRadioen 101.4</span>");
+	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
+	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
+	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_g_color);
+	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
+	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 60.71744, 11.1881112);
 	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
 	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
@@ -1075,7 +1108,7 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
   /* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
 	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
-	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);	
+	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
 	station = g_strdup("Washington, District of Columbia\n<span size=\"small\">WAMU</span>");
 	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
 	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);

@@ -1,5 +1,5 @@
 Name:           gnome-radio
-Version:        49.0
+Version:        50.1
 Release:        1%{?dist}
 Summary:        Radio
 License:        GPLv3+
@@ -77,6 +77,18 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sun Jun 29 2025 Ole Aamot <ole@aamot.org> - 50.1-1
+- Initial gnome-radio 50.1 builds on Fedora Linux 43
+
+* Sun Jun 29 2025 Ole Aamot <ole@aamot.org> - 50.0-1
+- Initial gnome-radio 50.0 builds on Fedora Linux 42
+
+* Sun Jun 29 2025 Ole Aamot <ole@aamot.org> - 49.2-1
+- Development gnome-radio 49.2 with HamarRadioen (Stange, Norge / Hamar, Norge / Ringsaker, Norge)
+
+* Sun Jun 29 2025 Ole Aamot <ole@aamot.org> - 49.1-1
+- Development gnome-radio 49.1 with HamarRadioen (Hamar-region, Norge)
+
 * Sun Mar 02 2025 Ole Aamot <ole@aamot.org> - 49.0-1
 - Initial gnome-radio 49.0 with Vermont Public Radio (Vermont, United States of America)
 
