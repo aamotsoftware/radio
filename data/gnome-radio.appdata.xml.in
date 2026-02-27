@@ -6,18 +6,18 @@
   <licence>CC0</licence>
   <description>
     <p>
-      Radio 50.1 is a Free Software program that allows you easily
+      Radio 52 is a Free Software program that allows you easily
       listen to live National Public Radio broadcasts under GNOME.
     </p>
     <p>
-      Radio 50.1 is developed on the GNOME desktop platform and
+      Radio 52 is developed on the GNOME desktop platform and
       it requires GTK4, Clutter and GStreamer 1.0 for playback.
     </p>
     <p>    
     Enjoy Live Radio broadcasts under GNOME.
     </p>
   </description>
-  <url type="homepage">https://wiki.gnome.org/Apps/Radio</url>
+  <url type="homepage">https://www.gnomeradio.org/</url>
   <screenshots>
     <screenshot type="default">https://www.gnomeradio.org/screenshot.png</screenshot>
   </screenshots>

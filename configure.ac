@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([gnome-radio],[50.1])
+AC_INIT([gnome-radio],[52.0])
 AM_INIT_AUTOMAKE([-Wno-portability 1.11 no-dist-gzip dist-xz tar-ustar subdir-objects])
 AM_MAINTAINER_MODE
 AC_CONFIG_SRCDIR([src/gnome-radio.c])
@@ -131,7 +131,7 @@ AC_CHECK_FUNCS([strdup])
 # ***********                                                                   
 
 AM_GLIB_GNU_GETTEXT
-IT_PROG_INTLTOOL([0.50.1])
+IT_PROG_INTLTOOL([0.50.2])
 
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST(GETTEXT_PACKAGE)

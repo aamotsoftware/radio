@@ -3,7 +3,7 @@ Version:        @VERSION@
 Release:        1%{?dist}
 Summary:        Radio
 License:        GPLv3+
-URL:            http://www.gnomeradio.org/
+URL:            https://www.gnomeradio.org/
 Source:         %{url}/src/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
@@ -77,6 +77,15 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sat Aug 16 2025 Ole Aamot <ole@aamot.org> - 52.0-1
+- Stable Release
+
+* Sun Aug 10 2025 Ole Aamot <ole@aamot.org> - 51.0-1
+- Initial gnome-radio 51.0 with Gudbrandsdalsradioen
+
+* Sun Jul 27 2025 Ole Aamot <ole@aamot.org> - 50.2-1
+- Stable gnome-radio 50.2 with HamarRadioen for FC43
+
 * Sun Jun 29 2025 Ole Aamot <ole@aamot.org> - 50.1-1
 - Initial gnome-radio 50.1 builds on Fedora Linux 43
 

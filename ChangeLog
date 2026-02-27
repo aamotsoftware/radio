@@ -1,3 +1,132 @@
+commit e16cb5fc07c612b13dd01abc7452b4c55a242bde
+Author: Ole K. Aamot <o.k.aamot@fys.uio.no>
+Date:   Sun Aug 10 19:29:52 2025 +0200
+
+    GNOME Radio version 52.0 (gnome-radio) -- Stable Release
+
+ ChangeLog                      |   53 ++
+ INSTALL                        |  477 ++++++++-------
+ Makefile                       |   36 +-
+ NEWS                           |   11 +
+ README                         |    2 +-
+ autom4te.cache/output.1        | 1283 +++++++++++++++++++++++++++++-----------
+ autom4te.cache/output.2        | 1283 +++++++++++++++++++++++++++++-----------
+ autom4te.cache/requests        |    1 +
+ autom4te.cache/traces.1        |    2 +-
+ autom4te.cache/traces.2        |    2 +-
+ compile                        |   11 +-
+ config.guess                   |   11 +-
+ config.h                       |    6 +-
+ config.log                     | 1045 ++++++++++++++++----------------
+ config.status                  |   53 +-
+ config.sub                     |  729 +++++++++++++++++------
+ configure                      | 1283 +++++++++++++++++++++++++++++-----------
+ configure.ac                   |    2 +-
+ data/Makefile                  |   34 +-
+ data/icons/Makefile            |   34 +-
+ depcomp                        |   15 +-
+ gnome-radio.spec               |    5 +-
+ gnome-radio.spec.in            |    3 +
+ gtk/Makefile                   |   34 +-
+ gtk/org.gnome.Radio.xml        |    2 +-
+ help/C/version.xml             |    2 +-
+ help/Makefile                  |   34 +-
+ install-sh                     |   10 +-
+ libtool                        |  745 ++++++++++++-----------
+ ltmain.sh                      |  732 +++++++++++++----------
+ m4/libtool.m4                  |  462 +++++++++------
+ m4/ltoptions.m4                |  106 ++--
+ m4/ltsugar.m4                  |    2 +-
+ m4/ltversion.m4                |   12 +-
+ m4/lt~obsolete.m4              |    2 +-
+ man/Makefile                   |   34 +-
+ missing                        |   75 ++-
+ po/Makefile                    |    4 +-
+ po/Makefile.in                 |    4 +-
+ src/Makefile                   |   34 +-
+ src/gnome-radio.c              |    4 +-
+ src/gnome-radio.xml            |    2 +-
+ src/gtk-radio.xml              |    2 +-
+ src/internet-radio-locator.xml |    2 +-
+ stamp-h1                       |    1 -
+ 45 files changed, 5647 insertions(+), 3039 deletions(-)
+
+commit ab92686fab64df5297fc68f9306bfb416ac81584
+Author: Ole K. Aamot <o.k.aamot@fys.uio.no>
+Date:   Sun Aug 10 19:07:49 2025 +0200
+
+    GNOME Radio version 50.2 (gnome-radio) -- Stable release
+
+ ChangeLog                                    |    23 +
+ Makefile                                     |    46 +-
+ NEWS                                         |    12 +
+ autom4te.cache/output.0                      | 17575 ++++++++++++++++++++++---
+ autom4te.cache/output.1                      |   427 +-
+ autom4te.cache/output.2                      |    31 +-
+ autom4te.cache/output.3                      |  1294 +-
+ autom4te.cache/requests                      |   475 +-
+ autom4te.cache/traces.0                      |  4032 +++++-
+ autom4te.cache/traces.1                      |  4274 ++----
+ autom4te.cache/traces.2                      |     4 +-
+ autom4te.cache/traces.3                      |  4384 ++++--
+ config.h                                     |     6 +-
+ config.log                                   |   280 +-
+ config.status                                |    73 +-
+ configure                                    |    30 +-
+ configure.ac                                 |     4 +-
+ data/Makefile                                |    54 +-
+ data/gnome-radio.appdata.xml.in              |     4 +-
+ data/gnome-radio.desktop                     |     2 +-
+ data/gnome-radio.desktop.in                  |     2 +-
+ data/icons/Makefile                          |    54 +-
+ gnome-radio.spec                             |     5 +-
+ gnome-radio.spec.in                          |     3 +
+ gtk/.deps/org_gnome_Radio-org.gnome.Radio.Po |    67 +-
+ gtk/Makefile                                 |    54 +-
+ gtk/org.gnome.Radio.xml                      |     2 +-
+ help/C/version.xml                           |     2 +-
+ help/Makefile                                |    54 +-
+ libtool                                      |    14 +-
+ man/Makefile                                 |    54 +-
+ po/Makefile                                  |     4 +-
+ po/Makefile.in                               |     4 +-
+ src/.deps/gtk_radio-gtk-radio-gui.Po         |    67 +-
+ src/.deps/gtk_radio-gtk-radio-markers.Po     |    67 +-
+ src/.deps/gtk_radio-gtk-radio-player.Po      |    67 +-
+ src/.deps/gtk_radio-gtk-radio-station.Po     |    67 +-
+ src/.deps/gtk_radio-gtk-radio-tz.Po          |    63 +-
+ src/.deps/gtk_radio-gtk-radio.Po             |    67 +-
+ src/Makefile                                 |    54 +-
+ src/gnome-radio.c                            |     4 +-
+ src/gnome-radio.xml                          |     2 +-
+ src/gtk-radio.c                              |     4 +-
+ src/gtk-radio.xml                            |     2 +-
+ src/internet-radio-locator.xml               |     2 +-
+ 45 files changed, 25698 insertions(+), 8117 deletions(-)
+
+commit abbbaf16cf29d5d47f514bce1b8a198c2ecf838c
+Author: Ole Kristian Aamot <olekaam@alumni.ntnu.no>
+Date:   Wed Jul 2 02:01:19 2025 +0200
+
+    GNOME Radio 50.1 (gnome-radio) -- Stable Release
+
+ ChangeLog                       | 60 +++++++++++++++++++++++++++++++++++++++++
+ Makefile                        | 36 ++++++++++++-------------
+ configure                       | 20 +++++++-------
+ configure.ac                    |  2 +-
+ data/gnome-radio.appdata.xml.in | 18 ++++++-------
+ data/gnome-radio.desktop        |  2 +-
+ data/gnome-radio.desktop.in     |  2 +-
+ data/gnome-radio.desktop.in.in  |  4 +--
+ gnome-radio.spec                |  5 +++-
+ gnome-radio.spec.in             |  3 +++
+ src/gnome-radio.c               |  4 +--
+ src/gnome-radio.xml             |  2 +-
+ src/gtk-radio.c                 |  4 +--
+ src/gtk-radio.xml               |  2 +-
+ src/internet-radio-locator.xml  |  4 +--
+ 15 files changed, 117 insertions(+), 51 deletions(-)
+
 commit 24a8340656638acc48c05a2c611f9b20fe859a15
 Author: Ole Aamot <ole@aamotsoftware.com>
 Date:   Sun Jun 29 19:22:54 2025 +0200

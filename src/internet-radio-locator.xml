@@ -1,6 +1,6 @@
 <?xml-stylesheet type="text/xsl" href="https://www.gnomeradio.org/~ole/radio/internet-radio-locator.xsl" ?>
 <!DOCTYPE internet_radio_locator SYSTEM "internet-radio-locator-48.0.dtd">
-<internet_radio_locator version="50.1">
+<internet_radio_locator version="52.0">
   <station band="Online" id="vermontpublicradio" name="Vermont Public Radio" rank="1.0" type="org">
     <location>Vermont, United States of America</location>
     <description lang="en_US">Vermont Public is independent, community-supported media, serving Vermont with trusted, relevant and essential information. We share stories that bring people together.
@@ -1433,6 +1433,12 @@ WUMR has been the University of Memphis broadcasting outlet since 1979, when Sou
     <description lang="en">radiOrakel is the worlds oldest female run, feminist radio. Founded in 1982, radiOrakel has produced experimental radio-journalism, innovative comedy, and serious radio dramas for almost 40 years. Broadcasting on FM 99,3 in Norway, radiOrakel prides themselvs on having a queer agenda and standing up for inclusive feminism, making them a unique radio-experience for all types of listeners. Their music-profile covers anything and everything, from fringe punk to hardhitting country, and vibing techno-beats, with focus on female and queer artists.</description>
     <stream mime="audio/mpeg" uri="https://stream.radiorakel.no/fm993.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" channels="Stereo" bitrate="128 kbps" />
     <uri>http://radiorakel.no/</uri>
+  </station>
+    <station band="105FM" id="radiogudbrandsdal" name="Gudbrandsdalsradioen" rank="1.0" type="com">
+    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,0 in Vinstra</frequency>
+    <location>Vinstra, Norway</location>
+    <stream mime="audio/mpeg" uri="https://lyd.radioene.no/gdal.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+    <uri>https://radioene.no/gudbrandsdalsradioen</uri>
   </station>
   <station band="101.4FM" id="hamarradioen1014" name="HamarRadioen" rank="1.0" type="com">
     <frequency uri="http://www.hamarradioen.no/">FM 101.4 in Stange, Norge</frequency>
