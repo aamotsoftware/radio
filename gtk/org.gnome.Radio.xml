@@ -1,6 +1,12 @@
-<?xml-stylesheet type="text/xsl" href="https://www.gnomeradio.org/~ole/radio/internet-radio-locator.xsl" ?>
+<?xml-stylesheet type="text/xsl" href="https://people.gnome.org/~ole/gtk-internet-radio-locator/internet-radio-locator.xsl" ?>
 <!DOCTYPE internet_radio_locator SYSTEM "internet-radio-locator-48.0.dtd">
-<internet_radio_locator version="52.0">
+<internet_radio_locator version="54.0">
+  <station band="FM 106,2" id="radiowarszawa" name="Radio Warszawa" rank="1.0" type="pl">
+    <location>Warszawa, Poland</location>
+    <description lang="pl">Radio Warszawa</description>
+    <stream mime="audio/mpeg" uri="https://stream2.technologicznie.net/radio_warszawa.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="160 kbps" />
+    <uri>https://radiowarszawa.com.pl/</uri>
+  </station>
   <station band="Online" id="vermontpublicradio" name="Vermont Public Radio" rank="1.0" type="org">
     <location>Vermont, United States of America</location>
     <description lang="en_US">Vermont Public is independent, community-supported media, serving Vermont with trusted, relevant and essential information. We share stories that bring people together.
@@ -1434,75 +1440,6 @@ WUMR has been the University of Memphis broadcasting outlet since 1979, when Sou
     <stream mime="audio/mpeg" uri="https://stream.radiorakel.no/fm993.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" channels="Stereo" bitrate="128 kbps" />
     <uri>http://radiorakel.no/</uri>
   </station>
-  <station band="105FM" id="radiogudbrandsdal" name="Gudbrandsdalsradioen" rank="1.0" type="com">
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 102,9 in Dovreskogen</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 102,9 in Leirflata/Murudalen</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 102,9 in Randsverk</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 102,9 in Sjodalen</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 104,0 in Rondablikk</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 104,5 - 106,2 in Bismo/Nordberg</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 104,5 in Tretten</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 104,5 in Øyer</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 104,6 in Heidal</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 104,8 in Bjorli</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,0 in Harpefoss</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,0 in Vinstra</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,0 – 107,6 in Sør-Fron</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,2 - 107,4 in Otta</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,2 in Lora</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,2 in Otta</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,6 in Sør-Fron</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 105,6 in Vågå</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,0 – 107,4 – 102,9 in Sel</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,1 in Golå</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,2 in Grotli-Skjåk</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,2 in Sjoa</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,3 in Lillehammer</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,3 in Venabu</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,3 – 107,9 in Øyer</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,4 in Lesjaskog</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,8 in Dombås</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,8 in Fåvang</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 106,8 in Lesja</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 107,0 in Kvam</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 107,0 in Lom/Bøverdalen</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 107,4 in Sel</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 107,6 in Ringebu</frequency>
-    <frequency uri="https://radioene.no/gudbrandsdalsradioen">FM 107,9 in Skjåk</frequency>    
-    <location>Bismo/Nordberg, Norway</location>
-    <location>Bjorli, Norway</location>
-    <location>Dombås, Norway</location>
-    <location>Dovreskogen, Norway</location>
-    <location>Fåvang, Norway</location>
-    <location>Golå, Norway</location>
-    <location>Grotli-Skjåk, Norway</location>
-    <location>Harpefoss, Norway</location>
-    <location>Heidal, Norway</location>
-    <location>Kvam, Norway</location>
-    <location>Leirflata/Murudalen, Norway</location>
-    <location>Lesja, Norway</location>
-    <location>Lesjaskog, Norway</location>
-    <location>Lillehammer, Norway</location> 
-    <location>Lom/Bøverdalen, Norway</location>
-    <location>Lora, Norway</location>
-    <location>Otta, Norway</location>
-    <location>Randsverk, Norway</location>
-    <location>Ringebu, Norway</location>
-    <location>Rondablikk, Norway</location>
-    <location>Sel, Norway</location>
-    <location>Sel, Norway</location>
-    <location>Sjoa, Norway</location>
-    <location>Sjodalen, Norway</location>
-    <location>Skjåk, Norway</location>
-    <location>Sør-Fron, Norway</location>
-    <location>Tretten, Norway</location>
-    <location>Venabu, Norway</location>
-    <location>Vinstra, Norway</location>
-    <location>Vågå, Norway</location>
-    <location>Øyer, Norway</location>
-    <stream mime="audio/mpeg" uri="https://lyd.radioene.no/gdal.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
-    <uri>https://radioene.no/gudbrandsdalsradioen</uri>
-  </station>  
   <station band="101.4FM" id="hamarradioen1014" name="HamarRadioen" rank="1.0" type="com">
     <frequency uri="http://www.hamarradioen.no/">FM 101.4 in Stange, Norge</frequency>
     <location>Stange, Norge</location>

@@ -1,3 +1,18 @@
+commit 12c803be062140b0cea8c86e5e14c7231bb92d26
+Author: Ole Kristian Aamot <olekaa@democracy.aamotinnovation.com>
+Date:   Sun Aug 17 12:55:31 2025 +0200
+
+    GNOME Radio 52.0 (gnome-radio)
+
+ ChangeLog                                | 53 ++++++++++++++++++
+ Makefile                                 |  2 +-
+ Makefile.in                              |  2 +-
+ config.log                               | 93 +++++++++++++++-----------------
+ src/gnome-radio-markers.c                | 11 ++++
+ src/gtk-internet-radio-locator-markers.c | 11 ++++
+ src/gtk-radio-markers.c                  | 11 ++++
+ 7 files changed, 131 insertions(+), 52 deletions(-)
+
 commit e16cb5fc07c612b13dd01abc7452b4c55a242bde
 Author: Ole K. Aamot <o.k.aamot@fys.uio.no>
 Date:   Sun Aug 10 19:29:52 2025 +0200

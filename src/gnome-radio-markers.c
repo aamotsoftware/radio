@@ -455,6 +455,17 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
 	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
 	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
+	station = g_strdup("Elverum, Norway\n<span size=\"small\">ElverumsRadioen</span>");
+	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
+	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
+	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_e_color);
+	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
+	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 60.87943, 11.5627278);
+	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
+	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
+	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
+	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
+        marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
 	station = g_strdup("Finnmark, Norway\n<span size=\"small\">NRK P1 Finnmark</span>");
 	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
 	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
@@ -1087,23 +1098,12 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
 	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
         marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
-	station = g_strdup("Vinstra, Norway\n<span size=\"small\">Gudbrandsdalradioen</span>");
-	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
-	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
-	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_g_color);
-	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
-	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 61.5957108,9.7347463);
-	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
-	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
-	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
-	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
-        marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
-	station = g_strdup("Warsaw, Poland\n<span size=\"small\">Radio Aktywne</span>");
+	station = g_strdup("Warszawa, Poland\n<span size=\"small\">Radio Warszawa</span>");
 	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
 	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
 	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_b_color);
 	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
-	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 52.2319237, 21.0067265);
+	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 52.2518304, 21.0278848);
 	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
 	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */

@@ -87,8 +87,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = aarch64-unknown-linux-gnu
-host_triplet = aarch64-unknown-linux-gnu
+build_triplet = x86_64-pc-linux-gnu
+host_triplet = x86_64-pc-linux-gnu
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/gtk-doc.m4 \
@@ -211,15 +211,15 @@ am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
 distcleancheck_listfiles = \
   find . \( -type f -a \! \
             \( -name .nfs* -o -name .smb* -o -name .__afs* \) \) -print
-ACLOCAL = ${SHELL} '/home/oleaamot/gnome-radio-51.0/missing' aclocal-1.17
+ACLOCAL = ${SHELL} '/home/olekaa/radio/missing' aclocal-1.17
 ALL_LINGUAS = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
 AS = as
-AUTOCONF = ${SHELL} '/home/oleaamot/gnome-radio-51.0/missing' autoconf
-AUTOHEADER = ${SHELL} '/home/oleaamot/gnome-radio-51.0/missing' autoheader
-AUTOMAKE = ${SHELL} '/home/oleaamot/gnome-radio-51.0/missing' automake-1.17
+AUTOCONF = ${SHELL} '/home/olekaa/radio/missing' autoconf
+AUTOHEADER = ${SHELL} '/home/olekaa/radio/missing' autoheader
+AUTOMAKE = ${SHELL} '/home/olekaa/radio/missing' automake-1.17
 AWK = gawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -250,7 +250,7 @@ GETTEXT_PACKAGE = gnome-radio
 GMOFILES = 
 GMSGFMT = /usr/bin/msgfmt
 GNOME_RADIO_CFLAGS = -I/usr/include/champlain-0.12 -I/usr/include/clutter-gtk-1.0 -I/usr/include/libsoup-3.0 -I/usr/include/clutter-1.0 -I/usr/include/cogl -I/usr/include/libdrm -I/usr/include/json-glib-1.0 -I/usr/include/geocode-glib-2.0 -I/usr/include/gstreamer-1.0 -I/usr/include/orc-0.4 -I/usr/include/gtk-3.0 -I/usr/include/pango-1.0 -I/usr/include/cloudproviders -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/webp -I/usr/include/at-spi2-atk/2.0 -I/usr/include/at-spi-2.0 -I/usr/include/atk-1.0 -I/usr/lib64/pkgconfig/../../include/dbus-1.0 -I/usr/lib64/pkgconfig/../../lib64/dbus-1.0/include -I/usr/include/libgeoclue-2.0 -I/usr/include/gio-unix-2.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/libxml2 -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/include/libpng16 -DWITH_GZFILEOP -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/sysprof-6 -pthread
-GNOME_RADIO_LIBS = -lchamplain-gtk-0.12 -lclutter-gtk-1.0 -lchamplain-0.12 -lclutter-1.0 -lcogl-path -lcogl-pango -lcogl -lgmodule-2.0 -pthread -lwayland-egl -lgbm -ldrm -lEGL -lXrandr -ljson-glib-1.0 -lwayland-cursor -lwayland-client -lxkbcommon -lwayland-server -lX11 -lXext -lXdamage -lXfixes -lXcomposite -lXi -lgeocode-glib-2 -lgstplayer-1.0 -lgsttag-1.0 -lgstvideo-1.0 -lgstbase-1.0 -lgstreamer-1.0 -lgtk-3 -lgdk-3 -lz -lpangocairo-1.0 -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgeoclue-2 -lgio-2.0 -lxml2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lharfbuzz -lfontconfig -lfreetype
+GNOME_RADIO_LIBS = -lchamplain-gtk-0.12 -lclutter-gtk-1.0 -lchamplain-0.12 -lclutter-1.0 -lcogl-path -lcogl-pango -lcogl -lgmodule-2.0 -pthread -lwayland-egl -lgbm -ldrm -lEGL -lXrandr -ljson-glib-1.0 -lwayland-cursor -lwayland-client -lxkbcommon -lwayland-server -lm -lX11 -lXext -lXdamage -lXfixes -lXcomposite -lXi -lgeocode-glib-2 -lgstplayer-1.0 -lgsttag-1.0 -lgstvideo-1.0 -lgstbase-1.0 -lgstreamer-1.0 -lgtk-3 -lgdk-3 -lz -lpangocairo-1.0 -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgeoclue-2 -lgio-2.0 -lxml2 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lharfbuzz -lfontconfig -lfreetype
 GNOME_RADIO_PKG_DEPS = champlain-gtk-0.12 geocode-glib-2.0 glib-2.0 gobject-2.0 gstreamer-1.0 gstreamer-player-1.0 gstreamer-plugins-bad-1.0 gstreamer-plugins-base-1.0 gstreamer-plugins-good-1.0 gstreamer-video-1.0 gtk+-3.0 geoclue-2.0 libgeoclue-2.0 libxml-2.0 pangoft2
 GREP = /usr/bin/grep
 GTKDOC_CHECK = gtkdoc-check.test
@@ -279,7 +279,7 @@ INTLTOOL__v_MERGE_ = $(INTLTOOL__v_MERGE_$(AM_DEFAULT_VERBOSITY))
 INTLTOOL__v_MERGE_0 = @echo "  ITMRG " $@;
 INTL_MACOSX_LIBS = 
 ITSTOOL = itstool
-LD = /usr/bin/ld
+LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBM = -lm
 LIBOBJS = 
@@ -289,8 +289,8 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAINT = #
-MAKEINFO = ${SHELL} '/home/oleaamot/gnome-radio-51.0/missing' makeinfo
+MAINT = 
+MAKEINFO = ${SHELL} '/home/olekaa/radio/missing' makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /usr/bin/mkdir -p
 MKINSTALLDIRS = .//mkinstalldirs
@@ -306,10 +306,10 @@ OTOOL64 =
 PACKAGE = gnome-radio
 PACKAGE_BUGREPORT = 
 PACKAGE_NAME = gnome-radio
-PACKAGE_STRING = gnome-radio 52.0
+PACKAGE_STRING = gnome-radio 54.0
 PACKAGE_TARNAME = gnome-radio
 PACKAGE_URL = 
-PACKAGE_VERSION = 52.0
+PACKAGE_VERSION = 54.0
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
@@ -324,15 +324,15 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = strip
 USE_NLS = yes
-VERSION = 52.0
+VERSION = 54.0
 XGETTEXT = /usr/bin/xgettext
 XMLLINT = xmllint
 YELP_LC_DIST = true
 YELP_LC_MEDIA_LINKS = true
-abs_builddir = /home/oleaamot/gnome-radio-51.0
-abs_srcdir = /home/oleaamot/gnome-radio-51.0
-abs_top_builddir = /home/oleaamot/gnome-radio-51.0
-abs_top_srcdir = /home/oleaamot/gnome-radio-51.0
+abs_builddir = /home/olekaa/radio
+abs_srcdir = /home/olekaa/radio
+abs_top_builddir = /home/olekaa/radio
+abs_top_srcdir = /home/olekaa/radio
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -344,26 +344,26 @@ am__tar = tar --format=ustar -chf - "$$tardir"
 am__untar = tar -xf -
 am__xargs_n = xargs -n
 bindir = ${exec_prefix}/bin
-build = aarch64-unknown-linux-gnu
+build = x86_64-pc-linux-gnu
 build_alias = 
-build_cpu = aarch64
+build_cpu = x86_64
 build_os = linux-gnu
-build_vendor = unknown
+build_vendor = pc
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = aarch64-unknown-linux-gnu
+host = x86_64-pc-linux-gnu
 host_alias = 
-host_cpu = aarch64
+host_cpu = x86_64
 host_os = linux-gnu
-host_vendor = unknown
+host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/oleaamot/gnome-radio-51.0/install-sh
+install_sh = ${SHELL} /home/olekaa/radio/install-sh
 intltool__v_merge_options_ = $(intltool__v_merge_options_$(AM_DEFAULT_VERBOSITY))
 intltool__v_merge_options_0 = -q
 libdir = ${exec_prefix}/lib
@@ -431,7 +431,7 @@ all: config.h
 .SUFFIXES:
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: # $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -457,9 +457,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
 
-$(top_srcdir)/configure: # $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	$(am__cd) $(srcdir) && $(AUTOCONF)
-$(ACLOCAL_M4): # $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
@@ -470,7 +470,7 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	$(AM_V_at)rm -f stamp-h1
 	$(AM_V_GEN)cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in: # $(am__configure_deps) 
+$(srcdir)/config.h.in:  $(am__configure_deps) 
 	$(AM_V_GEN)($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	$(AM_V_at)rm -f stamp-h1
 	$(AM_V_at)touch $@
