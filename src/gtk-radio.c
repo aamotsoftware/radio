@@ -573,7 +573,7 @@ gtk_radio_window_cb (GtkApplication *app,
 	gtk_container_add (GTK_CONTAINER(window), GTK_WIDGET(grid));
 	g_signal_connect (window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 #endif
-	gtk_window_set_title (GTK_WINDOW(window), _("GTK Radio 557.0 (www.gtkradio.org)"));
+	gtk_window_set_title (GTK_WINDOW(window), _("GTK Radio 572.0 (www.gtkradio.org)"));
 	gtk_window_set_default_size (GTK_WINDOW(window), 1440, 720);
 
 	gtk_radio_app = create_gtk_radio_app();
@@ -734,7 +734,7 @@ main (int argc,
 	/* give the window a 10px wide border */
 	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
 	/* give it the title */
-	gtk_window_set_title (GTK_WINDOW (window), _("GTK Radio 557.0 (www.gtkradio.org)"));
+	gtk_window_set_title (GTK_WINDOW (window), _("GTK Radio 572.0 (www.gtkradio.org)"));
 	/* Connect the destroy event of the window with our on_destroy function
 	 * When the window is about to be destroyed we get a notificaiton and
 	 * stop the main GTK loop
@@ -770,7 +770,7 @@ main (int argc,
 
 	license_actor = champlain_view_get_license_actor (view);
 	champlain_license_set_extra_text (license_actor, "Public Internet Radio");
-	champlain_view_center_on (CHAMPLAIN_VIEW (view), 44.5079609, -73.1534229);
+	champlain_view_center_on (CHAMPLAIN_VIEW (view), 44.949252, -93.0978326);
 	layer = create_marker_layer (view, &path);
 	champlain_view_add_layer (view, CHAMPLAIN_LAYER (path));
 	champlain_view_add_layer (view, CHAMPLAIN_LAYER (layer));
@@ -960,6 +960,11 @@ main (int argc,
 
 	gtk_box_pack_start (GTK_BOX (vbox), bbox, FALSE, FALSE, 0);
 	gtk_container_add (GTK_CONTAINER (vbox), viewport);
+
+	player = gst_player_new (NULL, gst_player_g_main_context_signal_dispatcher_new(NULL));
+	  
+	gtk_radio_player_new(player, "https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3");
+  gst_player_play(player);
 
 	/* and insert it into the main window  */
 	gtk_container_add (GTK_CONTAINER (window), vbox);

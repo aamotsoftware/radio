@@ -1,6 +1,64 @@
 <?xml-stylesheet type="text/xsl" href="http://www.gnomeradio.org/~ole/radio/gnome-radio.xsl" ?>
 <!DOCTYPE gnome_radio SYSTEM "gnome-radio-48.0.dtd">
-<gnome_radio version="57.0">
+<gnome_radio version="72.0">
+  <station band="FM 95.8" id="nearadio" name="Nea Radio" rank="1.0" type="no">
+    <location>Selbu/Tydal, Norway</location>
+    <location>Røros, Norway</location>
+    <location>Holtålen, Norway</location>
+    <location>Stjørdal, Norway</location>
+    <description lang="no">Nea Radio er en kommersiell allmennkringkaster med redaksjonslokaler i Holtålen, Røros og Selbu og i Stjørdal/Malvik.  Nea Radio ligger på Norgestoppen i lytting (TNS Gallup) og er i dag en flermedial og moderne lokalradiostasjon med sendinger på FM, nett, DAB, DAB+ og mobile plattformer.  Fra 6. februar 2017 er Nea Radio en 24/7-radiokanal. Det vil si at du hele døgnet sju dager i uka kan høre Nea Radio. Vi har morgensending kl. 6-10, lunsjradio kl. 10-14 og ettermiddagssending kl. 14-18. Om kvelden og i helga blir det gode reportasjer og variert musikk, og målet er at det skal være noe å høre på for alle hos oss.</description>
+    <stream mime="audio/mpeg" uri="https://nettradio.nearadio.no:8100/stream" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="191 kbps" />
+    <uri>https://nearadio.no/</uri>
+  </station>
+  <station band="FM 101.1" id="radioriks" name="Radio Riks" rank="1.0" type="no">
+    <location>Akershus, Norway</location>
+    <description lang="no">Radio Riks Oslo er en lokalradio med et klart mål om å nå flest mulig som liker å høre på en radio med variert innhold. Vi sender 24 timer i døgnet 7 dager i uka på FM 101,1 i Oslo, Romeriket, Asker og Bærum. I tillegg får du oss inn i store deler av Follo og Hurum. Nettradioen vår dekker hele verden. I løpet av døgnet kan du høre intervjuer, reportasjer, musikkhistorie, fagligpolitisk, alt ispedd mye god musikk!</description>
+    <stream mime="audio/mpeg" uri="http://stream.theradiohub.com/radioriksoslo/hq" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="255 kbps" />
+    <uri>https://radioriksoslo.no/</uri>
+  </station>
+  <station band="Online" id="radioalhara" name="Radio Alhara - راديو الحارة" rank="1.0" type="ps">
+    <location>Betlehem, Palestine</location>
+    <description lang="ps">Radio Alhara is a Palestinian online radio station broadcasting from Bethlehem since its launch in March 2020.</description>
+    <stream mime="" uri="https://stream.radiojar.com/78cxy6wkxtzuv" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+    <uri>https://www.radioalhara.net/</uri>
+  </station>
+  <station band="Online" id="radiostortinget" name="Radio Stortinget" rank="1.0" type="no">
+    <location>Stortinget, Norway</location>
+    <description lang="no">Stortingsmøter og høringer direkte i Stortingssalen.</description>
+    <stream mime="audio/mpeg" uri="https://httpcache1.dna.contentdelivery.net/90415-cachemn0/live/web/stortingssalen/playlist.m3u8?v=0" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+    <uri>https://www.stortinget.no/no/Hva-skjer-pa-Stortinget/Stortinget-akkurat-na/radio-stortinget/</uri>
+  </station> 
+  <station band="FM 105.8" id="radiolatinamerika" name="Radio Latin-Amerika" rank="1.0" type="no">
+    <location>Oslo, Norway</location>>
+    <description lang="no">Radio Latin-Amerika er blant Oslos eldste lokalradioer med 24-timer sendinger, hver dag, hele året på FM 105,8, DAB, nett- og mobilradio. Vi sender musikk, nyheter og underholdning.</description>
+    <stream mime="audio/mpeg" uri="https://stream.radiolatinamerika.no/latam_hq" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="192 kbps" />
+    <uri>https://radiolatinamerika.no/</uri>
+  </station>
+  <station band="SW 6000" id="radiohavanacuba" name="Radio Havana Cuba" rank="1.0" type="cu">
+    <location>Havana, Cuba</location>
+    <description lang="en">Radio Havana Cuba (Spanish: Radio Habana Cuba, RHC) is the official government-run international broadcasting station of Cuba. It can be heard in many parts of the world, including the United States, on shortwave frequencies.  Radio Havana Cuba, along with Radio Rebelde, Cubavision Television, and other Cuban radio and television, broadcasts to North, Central and South America via free-to-air programming from the Hispasat 30W-6 satellite over the Atlantic Ocean and worldwide via Internet streaming.</description>
+    <stream mime="audio/mpeg" uri="https://icecast.teveo.cu/McW3fLhs" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="64 kbps" />
+    <uri>https://www.radiohc.cu/</uri>
+  </station>
+  <station band="FM 89.3" id="thecurrent" name="Minnesota Public Radio - The Current" rank="1.0" type="org">
+    <location>Minneapolis, Minnesota, United States of America</location>
+    <description lang="en">The Current began broadcasting in 2005 as a non-commercial, member-supported radio station based in Minneapolis / St. Paul, heard on 89.3 KCMP FM. Since then, the station has grown into a far-reaching community with members and listeners joining in from around the world. One of Minnesota Public Radio’s three services, The Current brings listeners the best authentic new music alongside the music that inspired it, from local to legendary, indie to influential, new to nostalgic. The phone number for The Current studio is 651 989-4893.</description>
+    <stream mime="audio/mpeg" uri="https://current.stream.publicradio.org/current.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+    <uri>https://www.thecurrent.org/</uri>
+  </station>
+  <station band="FM 88.1" id="joven" name="Circuito Adulto Joven" rank="1.0" type="ve">
+    <location>Caracas, Venezuela</location>
+    <description lang="ve">88.1 FM «La Emisora Adulto Joven» inició sus actividades en el año 1989 bajo la dirección del periodista César Messori, cuyo objetivo fundamental fue crear una emisora con un gran contenido musical, complementado con la mejor información en materia periodística, educativa y cultural, dirigida a un público con características bien definidas.</description>
+    <stream mime="audio/mpeg" uri="https://server6.globalhostla.com:9168/stream" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="62 kbps" />
+    <uri>https://www.88punto1fm.com/</uri>
+  </station>
+  <station band="FM 96.25" id="knr" name="Greenlandic Broadcasting Corporation" rank="1.0" type="gl">
+    <location>Greenland, Nuuk</location>
+    <location>Godthåb, Grønland</location>    
+    <description lang="gl">Kalaallit Nunaata Radioa / Radio Greenland</description>
+    <stream mime="audio/mpeg" uri="https://ice.cr5.streamzilla.xlcdn.com:8000/sz=knr=audio192" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="192 kbps" />
+    <uri>https://www.knr.gl/en/knr-radio</uri>
+  </station>
   <station band="FM 106,2" id="radiowarszawa" name="Radio Warszawa" rank="1.0" type="pl">
     <location>Warszawa, Poland</location>
     <description lang="pl">Radio Warszawa</description>
@@ -1649,7 +1707,7 @@ WUMR has been the University of Memphis broadcasting outlet since 1979, when Sou
   </station>
   <station band="90.1FM" id="c-span" lang="en" name="C-SPAN" rank="1.0" type="org">
     <frequency uri="http://www.c-span.org/">90.1 FM in Supreme Court, United States of America</frequency>
-    <location>Supreme Court, United States of America</location>
+    <location>C-SPAN, Supreme Court, United States of America</location>
     <description lang="en">C-SPAN Radio 90.1 WCSP-FM in Washington, DC offers commercial-free public affairs programming 24 hours a day. You’ll hear live coverage from Washington of important congressional hearings and key speeches from national leaders.</description>
     <stream mime="audio/mpeg" uri="https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="22050 Hz" channels="JntStereo" bitrate="40 kbps" />
     <uri>http://www.c-span.org/</uri>

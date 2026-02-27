@@ -623,12 +623,13 @@ gnome_radio_window_cb (GtkApplication *app,
 	gtk_container_add (GTK_CONTAINER(window), GTK_WIDGET(grid));
 	g_signal_connect (window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 #endif
-	gtk_window_set_title (GTK_WINDOW(window), _("Radio 57.0 - https://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
+	gtk_window_set_title (GTK_WINDOW(window), _("Radio 72.0 - https://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
 	gtk_window_set_default_size (GTK_WINDOW(window), 800, 600);
 	gtk_window_maximize (GTK_WINDOW (window));
 	gnome_radio_app = create_gnome_radio_app();
 	gtk_widget_show(gnome_radio_app);
 
+	/* gnome_radio_player_stop(player); */
 	/* stations_selector = create_stations_selector(selected_station_uri, "gnome_radio.xml"); */
 
 	/* g_object_add_weak_pointer(G_OBJECT(stations_selector), */
@@ -810,7 +811,7 @@ static void activate(GtkApplication *app, gpointer user_data)
 	/* give the window a 10px wide border */
 	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
 	/* give it the title */
-	gtk_window_set_title (GTK_WINDOW (window), _("Radio 57.0 - https://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
+	gtk_window_set_title (GTK_WINDOW (window), _("Radio 72.0 - https://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
 	/* Connect the destroy event of the window with our on_destroy function
 	 * When the window is about to be destroyed we get a notificaiton and
 	 * stop the main GTK loop
@@ -847,7 +848,7 @@ static void activate(GtkApplication *app, gpointer user_data)
 	license_actor = champlain_view_get_license_actor (view);
 	champlain_license_set_extra_text (license_actor, "Public Internet Radio");
 	/* FIXME: University of Southern California */
-	champlain_view_center_on (CHAMPLAIN_VIEW (view), 44.5079609, -73.1534229);
+	champlain_view_center_on (CHAMPLAIN_VIEW (view), 44.949252, -93.0978326);
 	
 	// location = gclue_simple_get_location (simple);
 	
@@ -1064,7 +1065,10 @@ int main (int argc, char **argv)
   if (gtk_clutter_init (&argc, &argv) != CLUTTER_INIT_SUCCESS)
 		return 1;
   gst_init(&argc, &argv);
-	app = gtk_application_new ("org.gnome.radio", G_APPLICATION_FLAGS_NONE);
+  player = gst_player_new (NULL, gst_player_g_main_context_signal_dispatcher_new(NULL));
+  gnome_radio_player_new(player, "https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3");
+  gst_player_play(player);
+  app = gtk_application_new ("org.gnome.radio", G_APPLICATION_FLAGS_NONE);
 	g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
 	status = g_application_run (G_APPLICATION (app), argc, argv);
 	g_object_unref (app);

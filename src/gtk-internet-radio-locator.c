@@ -2,7 +2,7 @@
  *
  * GTK Internet Radio Locator for GTK 4
  *
- * Copyright (C) 2014, 2015, 2016, 2017, 2018, 2022, 2025  Aamot Research
+ * Copyright (C) 2014, 2015, 2016, 2017, 2018, 2022, 2025, 2026  Aamot Research
  *
  * Author: Ole Aamot <ole@aamot.org>
  *
@@ -794,8 +794,8 @@ main (int argc,
 	clutter_actor_add_child (CLUTTER_ACTOR (view), scale);
 
 	license_actor = champlain_view_get_license_actor (view);
-	champlain_license_set_extra_text (license_actor, "Public Internet Radio");
-	champlain_view_center_on (CHAMPLAIN_VIEW (view), 44.5079609, -73.1534229);
+	champlain_license_set_extra_text (license_actor, "Internet Talk Radio");
+	champlain_view_center_on (CHAMPLAIN_VIEW (view), 44.949252, -93.0978326);
 	layer = create_marker_layer (view, &path);
 	champlain_view_add_layer (view, CHAMPLAIN_LAYER (path));
 	champlain_view_add_layer (view, CHAMPLAIN_LAYER (layer));
@@ -813,7 +813,7 @@ main (int argc,
 	append_point (path_layer, 45.4151, -73.1218);
 	champlain_view_add_layer (view, CHAMPLAIN_LAYER (path_layer));
 
-	gtk_widget_set_size_request (widget, 640, 481);
+	gtk_widget_set_size_request (widget, 640, 480);
 
 	bbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
 
@@ -992,6 +992,10 @@ main (int argc,
 	gtk_widget_show_all (window);
 
 	gst_init(&argc, &argv);
+
+	  player = gst_player_new (NULL, gst_player_g_main_context_signal_dispatcher_new(NULL));
+	  gtk_internet_radio_locator_player_new(player, "https://playerservices.streamtheworld.com/api/livestream-redirect/CSPANRADIO.mp3");
+  gst_player_play(player);
 
 	/* start the main loop */
 	gtk_main ();

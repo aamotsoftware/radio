@@ -61,6 +61,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_bindir}/gtk-radio
 %{_bindir}/gtk-internet-radio-locator
 %{_bindir}/org.gnome.Radio
+%{_bindir}/radio-icy
 %{_datadir}/%{name}/org.gnome.Radio.dtd
 %{_datadir}/%{name}/org.gnome.Radio.xml
 %{_datadir}/%{name}/doc/AAMOT.txt.xz
@@ -68,15 +69,66 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/gnome-radio-48.0.dtd
 %{_datadir}/%{name}/gnome-radio.xml
 %{_metainfodir}/%{name}.appdata.xml
+%{_metainfodir}/gtk-radio.appdata.xml
+%{_metainfodir}/org.gnome.Radio.appdata.xml
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/gtk-radio.desktop
+%{_datadir}/applications/org.gnome.Radio.desktop
 %{_datadir}/gtk-radio/gtk-radio-550.3.dtd
 %{_datadir}/gtk-radio/gtk-radio.xml
 %{_datadir}/gtk-internet-radio-locator/internet-radio-locator-48.0.dtd
 %{_datadir}/gtk-internet-radio-locator/internet-radio-locator.xml
 %{_datadir}/icons/hicolor/scalable/apps/gnome-radio.svg
+%{_datadir}/icons/hicolor/scalable/apps/gtk-radio.svg
+%{_datadir}/icons/hicolor/scalable/apps/org.gnome.Radio.svg
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Wed Feb 18 2026 Ole Aamot <ole@aamot.org> - 72.0-1
+- Stable gnome-radio 72.0 with Nea Radio (Stjørdal, Norway)
+
+* Mon Feb 16 2026 Ole Aamot <ole@aamot.org> - 71.0-1
+- Development gnome-radio 71.0 with Radio Riks (Nesodden, Norway)
+
+* Fri Feb 13 2026 Ole Aamot <ole@aamot.org> - 70.0-1
+- Stable gnome-radio 70.0 with Radio Alhara (Betlehem, Palestine)
+
+* Tue Feb 03 2026 Ole Aamot <ole@aamot.org> - 69.0-1
+- Stable gnome-radio 69.0 with Radio Stortinget (Stortinget, Oslo, Norway)
+
+* Mon Feb 02 2026 Ole Aamot <ole@aamot.org> - 68.0-1
+- Stable gnome-radio 68.0 with Radio Stortinget (Oslo, Norway)
+
+* Sat Jan 31 2026 Ole Aamot <ole@aamot.org> - 67.0-1
+- Stable gnome-radio 67.0 with Radio Latin-Amerika (Oslo, Norway)
+
+* Sat Jan 31 2026 Ole Aamot <ole@aamot.org> - 66.0-1
+- Stable gnome-radio 66.0 with Radio Cuba (Havana, Cuba)
+
+* Mon Jan 26 2026 Ole Aamot <ole@aamot.org> - 65.0-1
+- Stable gnome-radio 65.0 with The Current (Minneapolis, Minnesota, United States of America)
+
+* Sun Jan 25 2026 Ole Aamot <ole@aamot.org> - 64.1-1
+- Stable gnome-radio 64.1 with Minnesota Public Radio (Saint Paul, Minnesota, U.S.A.)
+
+* Tue Jan 06 2026 Ole Aamot <ole@aamot.org> - 64.0-1
+- Stable gnome-radio 64.0 with Circuito Adulto Joven (Caracas, Venezuela)
+
+* Tue Dec 23 2025 Ole Aamot <ole@aamot.org> - 63.0-1
+- Stable gnome-radio 63.0 with Free World Radio (Greenland)
+
+* Mon Dec 08 2025 Ole Aamot <ole@aamot.org> - 62.0-1
+- Stable gnome-radio 62.0 with World Wide Talk Radio
+
+* Wed Oct 29 2025 Ole Aamot <ole@aamot.org> - 60.0-1
+- Stable gnome-radio 60.0 with World Wide Live Radio
+
+* Wed Oct 15 2025 Ole Aamot <ole@aamot.org> - 59.0-1
+- Stable gnome-radio 59.0 with Free Internet Talk Radio (ARPANET)
+
+* Wed Oct 08 2025 Ole Aamot <ole@aamot.org> - 58.0-1
+- Stable gnome-radio 58.0 with BBC World Service (World Wide Web)
+
 * Wed Oct 01 2025 Ole Aamot <ole@aamot.org> - 57.0-1
 - Stable gnome-radio 57.0 with Radio Norwegian (Norway)
 
