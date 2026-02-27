@@ -1,6 +1,6 @@
 <?xml-stylesheet type="text/xsl" href="https://people.gnome.org/~ole/gtk-internet-radio-locator/internet-radio-locator.xsl" ?>
 <!DOCTYPE internet_radio_locator SYSTEM "internet-radio-locator-48.0.dtd">
-<internet_radio_locator version="56.0">
+<internet_radio_locator version="57.0">
   <station band="FM 106,2" id="radiowarszawa" name="Radio Warszawa" rank="1.0" type="pl">
     <location>Warszawa, Poland</location>
     <description lang="pl">Radio Warszawa</description>
@@ -627,6 +627,7 @@ In 1998, CBS merged with the international department of the Broadcasting Corpor
   <station band="Online" id="radionorwegian" lang="no" name="Radio Norwegian" rank="1.0" type="com">
     <location>Norway</location>
     <description lang="no">Radio Norwegian is a free radio station broadcasting from Norway</description>
+    <stream mime="audio/ogg" uri="http://stream.radionorwegian.com:8000/320.ogg" codec="Ogg Vorbis" samplerate="48000 Hz" bitrate="320 kbps" />
     <stream mime="audio/ogg" uri="http://stream.radionorwegian.com:8000/128.ogg" codec="Ogg Vorbis" samplerate="48000 Hz" bitrate="128 kbps" />
     <stream mime="audio/ogg" uri="http://stream.radionorwegian.com:8000/112.ogg" codec="Ogg Vorbis" samplerate="48000 Hz" bitrate="112 kbps" />
     <stream mime="audio/ogg" uri="http://stream.radionorwegian.com:8000/96.ogg" codec="Ogg Vorbis" samplerate="48000 Hz" bitrate="96 kbps" />

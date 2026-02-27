@@ -1,5 +1,5 @@
 Name:           gnome-radio
-Version:        56.0
+Version:        57.0
 Release:        1%{?dist}
 Summary:        Radio
 License:        GPLv3+
@@ -77,6 +77,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Wed Oct 01 2025 Ole Aamot <ole@aamot.org> - 57.0-1
+- Stable gnome-radio 57.0 with Radio Norwegian (Norway)
+
 * Fri Sep 12 2025 Ole Aamot <ole@aamot.org> - 56.0-1
 - Stable gnome-radio 56.0 with BBC World Service (United Kingdom)
 
