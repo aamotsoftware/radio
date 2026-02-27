@@ -77,6 +77,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri Sep 12 2025 Ole Aamot <ole@aamot.org> - 56.0-1
+- Stable gnome-radio 56.0 with BBC World Service (United Kingdom)
+
 * Wed Sep 10 2025 Ole Aamot <ole@aamot.org> - 52.0-1
 - Stable gnome-radio 52.0 with Radio Warszawa (Warszawa, Poland)
 
