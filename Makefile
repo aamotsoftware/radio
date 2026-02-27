@@ -211,15 +211,15 @@ am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
 distcleancheck_listfiles = \
   find . \( -type f -a \! \
             \( -name .nfs* -o -name .smb* -o -name .__afs* \) \) -print
-ACLOCAL = ${SHELL} '/home/olekaa/radio/missing' aclocal-1.17
+ACLOCAL = ${SHELL} '/home/olekaa/gnome-radio-54.0/missing' aclocal-1.17
 ALL_LINGUAS = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
 AS = as
-AUTOCONF = ${SHELL} '/home/olekaa/radio/missing' autoconf
-AUTOHEADER = ${SHELL} '/home/olekaa/radio/missing' autoheader
-AUTOMAKE = ${SHELL} '/home/olekaa/radio/missing' automake-1.17
+AUTOCONF = ${SHELL} '/home/olekaa/gnome-radio-54.0/missing' autoconf
+AUTOHEADER = ${SHELL} '/home/olekaa/gnome-radio-54.0/missing' autoheader
+AUTOMAKE = ${SHELL} '/home/olekaa/gnome-radio-54.0/missing' automake-1.17
 AWK = gawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -289,8 +289,8 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAINT = 
-MAKEINFO = ${SHELL} '/home/olekaa/radio/missing' makeinfo
+MAINT = #
+MAKEINFO = ${SHELL} '/home/olekaa/gnome-radio-54.0/missing' makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /usr/bin/mkdir -p
 MKINSTALLDIRS = .//mkinstalldirs
@@ -306,10 +306,10 @@ OTOOL64 =
 PACKAGE = gnome-radio
 PACKAGE_BUGREPORT = 
 PACKAGE_NAME = gnome-radio
-PACKAGE_STRING = gnome-radio 54.0
+PACKAGE_STRING = gnome-radio 55.0
 PACKAGE_TARNAME = gnome-radio
 PACKAGE_URL = 
-PACKAGE_VERSION = 54.0
+PACKAGE_VERSION = 55.0
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
@@ -324,15 +324,15 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = strip
 USE_NLS = yes
-VERSION = 54.0
+VERSION = 55.0
 XGETTEXT = /usr/bin/xgettext
 XMLLINT = xmllint
 YELP_LC_DIST = true
 YELP_LC_MEDIA_LINKS = true
-abs_builddir = /home/olekaa/radio
-abs_srcdir = /home/olekaa/radio
-abs_top_builddir = /home/olekaa/radio
-abs_top_srcdir = /home/olekaa/radio
+abs_builddir = /home/olekaa/gnome-radio-54.0
+abs_srcdir = /home/olekaa/gnome-radio-54.0
+abs_top_builddir = /home/olekaa/gnome-radio-54.0
+abs_top_srcdir = /home/olekaa/gnome-radio-54.0
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -363,7 +363,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/olekaa/radio/install-sh
+install_sh = ${SHELL} /home/olekaa/gnome-radio-54.0/install-sh
 intltool__v_merge_options_ = $(intltool__v_merge_options_$(AM_DEFAULT_VERBOSITY))
 intltool__v_merge_options_0 = -q
 libdir = ${exec_prefix}/lib
@@ -431,7 +431,7 @@ all: config.h
 .SUFFIXES:
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in: # $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -457,9 +457,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
 
-$(top_srcdir)/configure:  $(am__configure_deps)
+$(top_srcdir)/configure: # $(am__configure_deps)
 	$(am__cd) $(srcdir) && $(AUTOCONF)
-$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
+$(ACLOCAL_M4): # $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
@@ -470,7 +470,7 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	$(AM_V_at)rm -f stamp-h1
 	$(AM_V_GEN)cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in:  $(am__configure_deps) 
+$(srcdir)/config.h.in: # $(am__configure_deps) 
 	$(AM_V_GEN)($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	$(AM_V_at)rm -f stamp-h1
 	$(AM_V_at)touch $@

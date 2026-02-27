@@ -1,5 +1,5 @@
 Name:           gnome-radio
-Version:        54.0
+Version:        55.0
 Release:        1%{?dist}
 Summary:        Radio
 License:        GPLv3+
