@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
-  <id type="desktop">org.gnome.Radio.desktop</id>
+  <id type="desktop">radio-beamy.desktop</id>
   <_name>Live Democracy Radio on GNOME</_name>
   <_summary>Listen to Live Democracy on GNOME</_summary>
   <licence>CC0</licence>

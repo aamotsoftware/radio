@@ -103,7 +103,7 @@ DIST_COMMON = $(srcdir)/Makefile.am $(am__DIST_COMMON)
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES = gnome-radio.desktop gtk-radio.desktop \
-	org.gnome.Radio.desktop
+	org.gnome.Radio.desktop radio-beamy.desktop
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -189,7 +189,8 @@ DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in \
 	$(srcdir)/gnome-radio.desktop.in \
 	$(srcdir)/gtk-radio.desktop.in \
-	$(srcdir)/org.gnome.Radio.desktop.in
+	$(srcdir)/org.gnome.Radio.desktop.in \
+	$(srcdir)/radio-beamy.desktop.in
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
   dir0=`pwd`; \
@@ -265,7 +266,6 @@ GTKDOC_DEPS_LIBS = @GTKDOC_DEPS_LIBS@
 GTKDOC_MKPDF = @GTKDOC_MKPDF@
 GTKDOC_REBASE = @GTKDOC_REBASE@
 HAVE_GNOME_RADIO_RECORD = @HAVE_GNOME_RADIO_RECORD@
-HELP_DIR = @HELP_DIR@
 HTML_DIR = @HTML_DIR@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -283,7 +283,6 @@ INTLTOOL_V_MERGE_OPTIONS = @INTLTOOL_V_MERGE_OPTIONS@
 INTLTOOL__v_MERGE_ = @INTLTOOL__v_MERGE_@
 INTLTOOL__v_MERGE_0 = @INTLTOOL__v_MERGE_0@
 INTL_MACOSX_LIBS = @INTL_MACOSX_LIBS@
-ITSTOOL = @ITSTOOL@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBM = @LIBM@
@@ -294,7 +293,6 @@ LIPO = @LIPO@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 LT_SYS_LIBRARY_PATH = @LT_SYS_LIBRARY_PATH@
-MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MANIFEST_TOOL = @MANIFEST_TOOL@
 MKDIR_P = @MKDIR_P@
@@ -331,9 +329,6 @@ STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 XGETTEXT = @XGETTEXT@
-XMLLINT = @XMLLINT@
-YELP_LC_DIST = @YELP_LC_DIST@
-YELP_LC_MEDIA_LINKS = @YELP_LC_MEDIA_LINKS@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
 abs_top_builddir = @abs_top_builddir@
@@ -392,12 +387,12 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = icons
-DESKTOP_IN_FILES = gnome-radio.desktop.in.in gtk-radio.desktop.in.in org.gnome.Radio.desktop.in.in
+DESKTOP_IN_FILES = gnome-radio.desktop.in.in gtk-radio.desktop.in.in org.gnome.Radio.desktop.in.in radio-beamy.desktop.in.in
 DESKTOP_FILES = $(DESKTOP_IN_FILES:.desktop.in.in=.desktop)
 desktopdir = $(datadir)/applications
 desktop_DATA = $(DESKTOP_FILES)
 appdatadir = $(datadir)/metainfo
-appdata_in_files = gnome-radio.appdata.xml.in gtk-radio.appdata.xml.in org.gnome.Radio.appdata.xml.in
+appdata_in_files = gnome-radio.appdata.xml.in gtk-radio.appdata.xml.in org.gnome.Radio.appdata.xml.in radio-beamy.appdata.xml.in
 appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 EXTRA_DIST = $(DESKTOP_IN_FILES) $(DESKTOP_FILES) $(appdata_in_files)
 CLEANFILES = $(appdata_DATA)
@@ -405,7 +400,7 @@ DISTCLEANFILES = $(DESKTOP_FILES)
 all: all-recursive
 
 .SUFFIXES:
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -429,9 +424,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 gnome-radio.desktop: $(top_builddir)/config.status $(srcdir)/gnome-radio.desktop.in
@@ -439,6 +434,8 @@ gnome-radio.desktop: $(top_builddir)/config.status $(srcdir)/gnome-radio.desktop
 gtk-radio.desktop: $(top_builddir)/config.status $(srcdir)/gtk-radio.desktop.in
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 org.gnome.Radio.desktop: $(top_builddir)/config.status $(srcdir)/org.gnome.Radio.desktop.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
+radio-beamy.desktop: $(top_builddir)/config.status $(srcdir)/radio-beamy.desktop.in
 	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 
 mostlyclean-libtool:

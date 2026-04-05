@@ -1,6 +1,6 @@
 <?xml-stylesheet type="text/xsl" href="http://www.gnomeradio.org/~ole/radio/gnome-radio.xsl" ?>
 <!DOCTYPE gnome_radio SYSTEM "gnome-radio-48.0.dtd">
-<gnome_radio version="72.0">
+<gnome_radio version="75.0">
   <station band="FM 95.8" id="nearadio" name="Nea Radio" rank="1.0" type="no">
     <location>Selbu/Tydal, Norway</location>
     <location>Røros, Norway</location>
@@ -985,7 +985,7 @@ In 1998, CBS merged with the international department of the Broadcasting Corpor
     <stream mime="audio/aac" uri="http://http-live.sr.se/p4stockholm-aac-32" codec="MPEG-4 AAC" samplerate="48000 Hz" channels="Stereo" bitrate="32 kbps" />
     <uri>http://www.sverigesradio.se/stockholm/</uri>
   </station>
-  <station band="88.1FM" id="hpr" lang="en" name="Hawaii Public Radio" rank="1.0" type="org">
+  <station band="88.1FM" id="hpr" lang="Hawaiian" name="Hawaii Public Radio" rank="1.0" type="org">
     <frequency uri="http://www.hawaiipublicradio.org/">FM 88.1 &amp; FM 88.5 in Honolulu</frequency>
     <frequency uri="http://www.hawaiipublicradio.org/">FM 89.1 in Hilo</frequency>
     <frequency uri="http://www.hawaiipublicradio.org/">FM 90.7 in Wailuku</frequency>
@@ -1207,7 +1207,7 @@ Bergen Student Radio was founded in 1982, and is the oldest local radio in Berge
 
 Bergen Student Radio strives to be an alternative to commercial and state-run radio channels, and the radio station is run by around 160 volunteer students.
     </description>
-    <stream mime="audio/mpeg" uri="http://radio.srib.no:8888/srib.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="22050 Hz" channels="Stereo" bitrate="64 kbps" />
+    <stream mime="audio/mpeg" uri="http://radio.srib.no:8000/srib.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" channels="Stereo" bitrate="320 kbps" />
     <uri>http://srib.no/</uri>
   </station>
   <station band="94.1FM" id="narvikstudentradio" lang="nb" name="Narvik Studentradio" rank="1.0" type="edu">
@@ -1266,8 +1266,8 @@ WUMR has been the University of Memphis broadcasting outlet since 1979, when Sou
     <description lang="en">
       Radio Revolt (formerly known as Studentradion i Trondheim), is the student radio in Trondheim, Norway. It airs 55 hours a week on 100 and 106,2 FM, and 24 hours a day on the internet. It employs about 80 students on a voluntary basis. The radio is a part of the Student Society in Trondheim, and is so a part of the running of the house.
     </description>
-    <stream mime="audio/aac" uri="http://streamer.radiorevolt.no:8000/revolt.aac" codec="AAC, v4 LC" samplerate="44100 Hz" channels="Stereo" bitrate="128 kbps" />
-    <stream mime="audio/ogg" uri="http://streamer.radiorevolt.no:8000/revolt.ogg" codec="Ogg Vorbis" samplerate="44100 Hz" channels="Stereo" bitrate="128 kbps" />
+    <stream mime="audio/aac" uri="http://direkte.radiorevolt.no/revolt.aac" codec="AAC, v4 LC" samplerate="44100 Hz" channels="Stereo" bitrate="128 kbps" />
+    <stream mime="audio/ogg" uri="http://direkte.radiorevolt.no/revolt.ogg" codec="Ogg Vorbis" samplerate="44100 Hz" channels="Stereo" bitrate="128 kbps" />
     <uri>http://www.radiorevolt.no/</uri>
   </station>
   <station band="107.8FM" id="dcufm" lang="en" name="DCUfm" rank="1.0" type="edu">

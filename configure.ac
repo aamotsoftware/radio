@@ -1,9 +1,8 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([gnome-radio],[72.0])
+AC_INIT([gnome-radio],[75.0])
 AM_INIT_AUTOMAKE([-Wno-portability 1.11 no-dist-gzip dist-xz tar-ustar subdir-objects])
-AM_MAINTAINER_MODE
 AC_CONFIG_SRCDIR([src/gnome-radio.c])
 AC_CONFIG_HEADERS([config.h])
 
@@ -90,6 +89,7 @@ PKG_CHECK_MODULES(GNOME_RADIO,
 		  geocode-glib-2.0 >= 3.26 \
 		  glib-2.0 >= 2.38.0 \
 		  gobject-2.0 >= 2.38.0 \
+		  goocanvas-2.0 >= 2.0.0 \
 		  gstreamer-1.0 >= 1.0 \
 		  gstreamer-player-1.0 >= 1.0 \
 		  gstreamer-tag-1.0 >= 1.0 \
@@ -146,11 +146,13 @@ dnl Enable yelp-tools
 
 AC_CONFIG_FILES([
 Makefile
+beamy/Makefile
 data/Makefile
 data/icons/Makefile
 data/gnome-radio.desktop
 data/gtk-radio.desktop
 data/org.gnome.Radio.desktop
+data/radio-beamy.desktop
 doc/Makefile
 gtk/Makefile
 help/Makefile

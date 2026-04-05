@@ -1,9 +1,9 @@
-GNU Network Object Model Environment Radio 72.0 - WWW.GNOMERADIO.ORG/
+GNU Network Object Model Environment Radio 75.0 - WWW.GNOMERADIO.ORG/
 =====================================================================
 
 GNOME Radio is a Free Software program that allows you to easily
 locate and listen to Free Internet Radio stations by broadcasters on
-the Internet with the help of map and text search.
+the Internet with the help of map, language and text search.
 
 GNOME Radio is developed on the GNOME 50 desktop platform with GNOME
 Maps, libchamplain and geocode-lib and it requires gstreamer 1.0 for
@@ -38,7 +38,7 @@ Fedora Core x86_64 and Ubuntu Linux 24.04.4 amd64 from the web site at
 
 You can download the latest source release from the official Radio site:
 
-   https://www.gnomeradio.org/src/gnome-radio-72.0.tar.xz
+   https://www.gnomeradio.org/src/gnome-radio-75.0.tar.xz
 
 Enjoy Free Internet Radio.
 

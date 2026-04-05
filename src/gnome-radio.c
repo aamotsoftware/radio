@@ -54,8 +54,9 @@ GtkWidget *statusbar;
 GNOMERadioInfo *gnome_radio;
 
 GtkWidget *input;
-
+GtkWidget *llm;
 GtkEntryCompletion *completion;
+GtkEntryCompletion *llm_completion;
 
 GList *gnome_radio_archivers;
 GList *gnome_radio_listeners;
@@ -139,14 +140,15 @@ mouse_click_cb (ClutterActor *actor, ClutterButtonEvent *event, ChamplainView *v
 {
 	GError **error;
 	gdouble lat, lon;
-	GeocodePlace *place_city, *place_country;
+	GeocodePlace *place_city, *place_country, *place_llm;
 	GeocodeLocation *location_city;
 	GeocodeLocation *location_country;
-	GeocodeReverse *reverse_city, *reverse_country;
+	GeocodeLocation *location_llm;	
+	GeocodeReverse *reverse_city, *reverse_country, *reverse_llm;
 	ClutterColor city_color = { 0x9a, 0x9b, 0x9c, 0x9d };
 	ClutterColor text_color = { 0xff, 0xff, 0xff, 0xff };
 	gdouble lat_s, lon_s;
-	const char *name, *name_city, *name_country;
+	const char *name, *name_city, *name_country, *name_llm;
 	/* GeocodeForward *fwd; */
 	/* GList *list; */
 	/* GError **err; */
@@ -155,12 +157,16 @@ mouse_click_cb (ClutterActor *actor, ClutterButtonEvent *event, ChamplainView *v
 	/* champlain_view_center_on (CHAMPLAIN_VIEW (view), lat, lon); */
 	location_city = geocode_location_new (lat, lon, GEOCODE_LOCATION_ACCURACY_CITY);
 	location_country = geocode_location_new (lat, lon, GEOCODE_LOCATION_ACCURACY_COUNTRY);
+	location_llm = geocode_location_new (lat, lon, GEOCODE_LOCATION_ACCURACY_CONTINENT);	
 	reverse_city = geocode_reverse_new_for_location (location_city);
 	reverse_country = geocode_reverse_new_for_location (location_country);
+	reverse_llm = geocode_reverse_new_for_location (location_llm);
 	place_city = geocode_reverse_resolve (reverse_city, error);
 	place_country = geocode_reverse_resolve (reverse_country, error);
+	place_llm = geocode_reverse_resolve (reverse_llm, error);
 	name_city = geocode_place_get_town (place_city);
 	name_country = geocode_place_get_country (place_country);
+	name_llm = geocode_place_get_continent (place_llm);
 	if (!g_strcmp0(name_country, "United States of America")) {
 		name_country = geocode_place_get_state (place_country);
 	}
@@ -173,6 +179,11 @@ mouse_click_cb (ClutterActor *actor, ClutterButtonEvent *event, ChamplainView *v
 	if (g_strcmp0(name, NULL)) {
 		champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
 		gtk_entry_set_text(GTK_ENTRY(input),(gchar *)name);
+		g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), NULL);
+	}
+	if (g_strcmp0(name_llm, NULL)) {
+	        champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
+		gtk_entry_set_text(GTK_ENTRY(llm),(gchar *)name_llm);
 		g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), NULL);
 	}
 	lat_s = champlain_location_get_latitude (CHAMPLAIN_LOCATION (marker));
@@ -566,9 +577,13 @@ gnome_radio_window_cb (GtkApplication *app,
 	widget = gtk_champlain_embed_new();
 	toolbar = gtk_toolbar_new();
 	input = gtk_entry_new();
+	llm = gtk_entry_new();
 	gtk_entry_set_placeholder_text(GTK_ENTRY(input), "Search by city...");
-	gtk_entry_set_icon_from_stock(GTK_ENTRY(input), GTK_ENTRY_ICON_PRIMARY, GTK_STOCK_JUMP_TO);
+	gtk_entry_set_placeholder_text(GTK_ENTRY(llm), "Search by llm...");
+	gtk_entry_set_icon_from_icon_name(GTK_ENTRY(input), GTK_ENTRY_ICON_PRIMARY, GTK_STOCK_JUMP_TO);
+	gtk_entry_set_icon_from_icon_name(GTK_ENTRY(llm), GTK_ENTRY_ICON_PRIMARY, GTK_STOCK_JUMP_TO);	
 	gtk_entry_set_icon_tooltip_text(GTK_ENTRY(input), GTK_ENTRY_ICON_PRIMARY, "Type the city name you want to listen to radio from...");
+	gtk_entry_set_icon_tooltip_text(GTK_ENTRY(llm), GTK_ENTRY_ICON_PRIMARY, "Type the llm you want to listen to radio from...");	
 #if 0
 	search = gtk_tool_button_new(gtk_image_new_from_icon_name(NULL, GTK_ICON_SIZE_BUTTON), _("Search"));
 	gtk_tool_item_set_is_important(GTK_TOOL_ITEM(search), TRUE);
@@ -623,7 +638,7 @@ gnome_radio_window_cb (GtkApplication *app,
 	gtk_container_add (GTK_CONTAINER(window), GTK_WIDGET(grid));
 	g_signal_connect (window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 #endif
-	gtk_window_set_title (GTK_WINDOW(window), _("Radio 72.0 - https://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
+	gtk_window_set_title (GTK_WINDOW(window), _("Radio 75.0 - https://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
 	gtk_window_set_default_size (GTK_WINDOW(window), 800, 600);
 	gtk_window_maximize (GTK_WINDOW (window));
 	gnome_radio_app = create_gnome_radio_app();
@@ -719,6 +734,7 @@ on_search_matches(GtkEntryCompletion *widget,
 	GValue city = {0, };
 	GValue value = {0, };
 	GValue station_name = {0, };
+	GValue station_lang = {0, };	
 	gchar *location;
 	gchar *town;
 	gchar *country;
@@ -729,6 +745,7 @@ on_search_matches(GtkEntryCompletion *widget,
 	gtk_tree_model_get_value(model, iter, STATION_LOCATION, &city);
 	gtk_tree_model_get_value(model, iter, STATION_URI, &value);
 	gtk_tree_model_get_value(model, iter, STATION_NAME, &station_name);
+	gtk_tree_model_get_value(model, iter, STATION_LANG, &station_lang);	
 /* 	GNOME_RADIO_DEBUG_MSG ("on_search_matches: %s\n", (gchar *)g_value_get_string(&city)); */
 /* 	location = (gchar *)g_value_get_string(&city); */
 /* 	town = strtok(location, ", "); */
@@ -811,7 +828,7 @@ static void activate(GtkApplication *app, gpointer user_data)
 	/* give the window a 10px wide border */
 	gtk_container_set_border_width (GTK_CONTAINER (window), 10);
 	/* give it the title */
-	gtk_window_set_title (GTK_WINDOW (window), _("Radio 72.0 - https://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
+	gtk_window_set_title (GTK_WINDOW (window), _("Radio 75.0 - https://www.gnomeradio.org/ - https://wiki.gnome.org/Apps/Radio"));
 	/* Connect the destroy event of the window with our on_destroy function
 	 * When the window is about to be destroyed we get a notificaiton and
 	 * stop the main GTK loop
@@ -893,15 +910,25 @@ static void activate(GtkApplication *app, gpointer user_data)
 
 	input = gtk_entry_new();
 	completion = gtk_entry_completion_new();
+	llm_completion = gtk_entry_completion_new();
 	gtk_entry_completion_set_text_column(completion, STATION_NAME);
 	gtk_entry_completion_set_text_column(completion, STATION_LOCATION);
+	gtk_entry_completion_set_text_column(llm_completion, STATION_LANG);
+	gtk_entry_completion_set_text_column(llm_completion, STATION_LOCATION);	
 	gtk_entry_set_completion(GTK_ENTRY(input), completion);
+	gtk_entry_set_completion(GTK_ENTRY(llm), llm_completion);	
 	gtk_entry_set_icon_from_stock(GTK_ENTRY(input), GTK_ENTRY_ICON_PRIMARY, GTK_STOCK_JUMP_TO);
+	gtk_entry_set_icon_from_stock(GTK_ENTRY(llm), GTK_ENTRY_ICON_PRIMARY, GTK_STOCK_JUMP_TO);	
 	gtk_entry_set_icon_tooltip_text(GTK_ENTRY(input), GTK_ENTRY_ICON_PRIMARY, "Type the city name you want to listen to radio from...");
+	gtk_entry_set_icon_tooltip_text(GTK_ENTRY(llm), GTK_ENTRY_ICON_PRIMARY, "Type the language you want to listen to radio in...");	
 	gtk_entry_set_placeholder_text(GTK_ENTRY(input), "Search by city...");
+	gtk_entry_set_placeholder_text(GTK_ENTRY(llm), "Search by language...");	
 	g_signal_connect(G_OBJECT(completion), "match-selected",
 			 G_CALLBACK(on_search_matches), NULL);
-	model = gtk_list_store_new(11, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+	model = gtk_list_store_new(11, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
+	g_signal_connect(G_OBJECT(llm_completion), "match-selected",
+			 G_CALLBACK(on_search_matches), NULL);
+	model = gtk_list_store_new(11, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING);
 	world_station_xml_filename = g_strconcat(GNOME_RADIO_DATADIR, "/gnome-radio.xml", NULL);
 	GNOME_RADIO_DEBUG_MSG("world_station_xml_filename = %s\n",
 	    world_station_xml_filename);
@@ -957,6 +984,8 @@ static void activate(GtkApplication *app, gpointer user_data)
 				   stationinfo->samplerate,
 				   STATION_ID,
 				   stationinfo->id,
+				   STATION_LANG,
+				   stationinfo->lang,
 				   -1);
 
 		stationinfo = stationinfo->next;
@@ -964,9 +993,15 @@ static void activate(GtkApplication *app, gpointer user_data)
 
 	gtk_entry_completion_set_model(completion, GTK_TREE_MODEL(model));
 
+	gtk_entry_completion_set_model(llm_completion, GTK_TREE_MODEL(model));
+
 	gtk_widget_show(input);
 
+	gtk_widget_show(llm);
+
 	gtk_container_add (GTK_CONTAINER (bbox), input);
+
+	gtk_container_add (GTK_CONTAINER (bbox), llm);
 
 #if 0
 	button = gtk_button_new();

@@ -61,6 +61,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_bindir}/gtk-radio
 %{_bindir}/gtk-internet-radio-locator
 %{_bindir}/org.gnome.Radio
+%{_bindir}/radio-beamy
 %{_bindir}/radio-icy
 %{_datadir}/%{name}/org.gnome.Radio.dtd
 %{_datadir}/%{name}/org.gnome.Radio.xml
@@ -71,9 +72,11 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_metainfodir}/%{name}.appdata.xml
 %{_metainfodir}/gtk-radio.appdata.xml
 %{_metainfodir}/org.gnome.Radio.appdata.xml
+%{_metainfodir}/radio-beamy.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/gtk-radio.desktop
 %{_datadir}/applications/org.gnome.Radio.desktop
+%{_datadir}/applications/radio-beamy.desktop
 %{_datadir}/gtk-radio/gtk-radio-550.3.dtd
 %{_datadir}/gtk-radio/gtk-radio.xml
 %{_datadir}/gtk-internet-radio-locator/internet-radio-locator-48.0.dtd
@@ -81,9 +84,19 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/gnome-radio.svg
 %{_datadir}/icons/hicolor/scalable/apps/gtk-radio.svg
 %{_datadir}/icons/hicolor/scalable/apps/org.gnome.Radio.svg
+%{_datadir}/icons/hicolor/scalable/apps/radio-beamy.svg
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri Mar 20 2026 Ole Aamot <ole@aamot.org> - 75.0-1
+- Stable gnome-radio 75.0 with Languages
+
+* Wed Mar 18 2026 Ole Aamot <ole@aamot.org> - 74.0-1
+- Stable gnome-radio 74.0 with brand new radio-beamy
+
+* Mon Mar 02 2026 Ole Aamot <ole@aamot.org> - 73.0-1
+- Stable gnome-radio 73.0 with SRIB (Bergen, Norway)
+
 * Wed Feb 18 2026 Ole Aamot <ole@aamot.org> - 72.0-1
 - Stable gnome-radio 72.0 with Nea Radio (Stjørdal, Norway)
 

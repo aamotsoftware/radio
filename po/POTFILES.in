@@ -4,6 +4,7 @@
 data/gnome-radio.appdata.xml.in
 data/gtk-radio.appdata.xml.in
 data/org.gnome.Radio.appdata.xml.in
+data/radio-beamy.appdata.xml.in
 src/gnome-radio-gui.c
 src/gnome-radio-listener.c
 src/gnome-radio-location.c

@@ -1,4 +1,4 @@
-SUBDIRS = data doc gtk help icy man src po
+SUBDIRS = beamy data doc gtk help icy man src po
 
 datadir = @datadir@
 
