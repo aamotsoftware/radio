@@ -1,6 +1,37 @@
 <?xml-stylesheet type="text/xsl" href="http://www.gnomeradio.org/~ole/radio/gtk-radio.xsl" ?>
 <!DOCTYPE radio SYSTEM "gtk-radio-550.3.dtd">
-<radio version="575.0">
+<radio version="578.0">
+  <station band="Online" id="vaticannewsit" name="Vatican News Italiano" rank="1.0" type="va">
+    <location>Vatican City</location>
+    <description lang="it">Vatican News Italiano is the Italian-language live radio service of Radio Vaticana and Vatican News. The station provides coverage of papal events, liturgical celebrations, Vatican announcements, world news, cultural programming, and religious content with a focus on the Catholic Church and international affairs.</description>
+    <stream mime="audio/mpeg" uri="https://radio.vaticannews.va/stream-it" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+  </station>
+  <station band="Online" id="vaticannewsfr" name="Vatican News Français" rank="1.0" type="va">
+    <location>Vatican City</location>
+    <description lang="fr">Vatican News Français est le service radio francophone en direct de Radio Vaticane et Vatican News. La station diffuse des informations du Vatican, des célébrations liturgiques, des événements du pape, des actualités internationales et des programmes culturels et religieux destinés au public francophone.</description>
+    <stream mime="audio/mpeg" uri="https://radio.vaticannews.va/stream-fr" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+  </station>
+  <station band="Online" id="vaticannewses" name="Vatican News Español" rank="1.0" type="va">
+    <location>Vatican City</location>
+    <description lang="es">Vatican News Español es el servicio de radio en directo en español de Radio Vaticana y Vatican News. La emisora transmite noticias del Vaticano, eventos papales, celebraciones litúrgicas, actualidad internacional y programación cultural y religiosa dirigida a la audiencia hispanohablante.</description>
+    <stream mime="audio/mpeg" uri="https://radio.vaticannews.va/stream-es" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+  </station>
+  <station band="Online" id="radiorana" name="Radio Rana" rank="1.0" type="no">
+    <location>Mo i Rana, Norge</location>
+    <description lang="no">LokalRadioens Venner innehar anleggskonsesjon og konsesjon for lokalradio i Rana.  LokalRadioens Venner står bak Radio Rana som sender på FM 89.1 og 93.2 MHz, på DAB i Rana- og Hemnes-regionen og i tillegg som nettradio fra egen nettside.   Radio Rana er en lokalradiostasjon i Mo i Rana i Rana kommune i Nordland.  Den markedsfører seg under slagordet:  Lokalradioen i polarsirkelbyen Mo i Rana.  Radio Rana AS ble opprettet i 1984, først som AL senere som AS.  Radio Rana delte konsesjonen for Rana de første årene med Radio RV og overtok frekvensen helt da Radio RV få år etter ble lagt ned.  Radiostasjonen var fra starten eid av lokale eiere som lag og foreninger i kommunen.  «Radio Rana» var stasjonsnavnet i mange år.  Gjennom årene har radiostasjonen skiftet eiere flere ganger.  Radiostasjonen har hele tiden hatt et stort antall frivillige medarbeidere.</description>
+    <stream mime="audio/mpeg" uri="https://lyttradio.no/live.mp3" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="192 kbps" />
+  </station>
+  <station band="Online" id="armyfm" name="Армія FM" rank="1.0" type="ua">
+    <location>Ukraine</location>
+    <description lang="ua">Армія FM</description>
+    <stream mime="audio/mpeg" uri="https://icecast.armyfm.com.ua:8443/ArmyFM" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+  </station>
+  <station band="Online" id="radiowien" name="Radio Wien" rank="1.0" type="at">
+    <location>Vienna, Austria</location>
+    <description lang="at">Radio Wien is the regional public radio station for Vienna, operated by ORF. It offers a mix of local news, traffic updates, weather, talk segments, and a broad selection of music ranging from classic hits to contemporary pop. The station focuses on Viennese culture, community topics, and easy listening programming, making it a popular choice for listeners seeking both information and entertainment throughout the day.</description>
+    <stream mime="audio/mpeg" uri="https://orf-live.ors-shoutcast.at/wie-q1a" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="128 kbps" />
+    <stream mime="audio/mpeg" uri="https://orf-live.ors-shoutcast.at/wie-q2a" codec="MPEG 1 Audio, Layer 3 (MP3)" samplerate="44100 Hz" bitrate="192 kbps" />
+  </station>
   <station band="FM 95.8" id="nearadio" name="Nea Radio" rank="1.0" type="no">
     <location>Selbu/Tydal, Norway</location>
     <location>Røros, Norway</location>

@@ -1,3 +1,25 @@
+/* $id$
+ *
+ * GNOME Radio
+ *
+ * Copyright (C) 2021, 2022, 2025, 2026  Aamot Research & Innovation
+ *
+ * Author: Ole Aamot <ole@aamot.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 /*
  * Copyright (C) 2008 Pierre-Luc Beaudoin <pierre-luc@pierlux.com>
  *
@@ -83,12 +105,12 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 {
 	ClutterActor *marker;
 	ClutterActor *layer_actor;
-	ClutterColor city_color = {0xdd, 0x56, 0xb5, 0xFF};
-	ClutterColor city_a_color = {0x19, 0x4c, 0xb5, 0xFF};
-	ClutterColor city_b_color = {0x4c, 0x8b, 0x5e, 0xFF};
-	ClutterColor city_c_color = {0x22, 0x45, 0xb6, 0xFF};
-	ClutterColor city_d_color = {0x0f, 0x2d, 0x75, 0xFF};
-	ClutterColor city_e_color = {0x35, 0x84, 0xE4, 0xFF};
+	ClutterColor city_color = {0x56, 0xdd, 0xb5, 0xFF};
+	ClutterColor city_a_color = {0x4c, 0x19, 0xb5, 0xFF};
+	ClutterColor city_b_color = {0x8b, 0x4b, 0x5e, 0xFF};
+	ClutterColor city_c_color = {0x22, 0xb6, 0x45, 0xFF};
+	ClutterColor city_d_color = {0x75, 0x2d, 0x0f, 0xFF};
+	ClutterColor city_e_color = {0xE4, 0x84, 0x35, 0xFF};
 	ClutterColor text_color = {0xFF, 0xFF, 0xFF, 0xFF};
 	LocationCallbackData callback_data;
 	gchar *station = NULL;
@@ -1145,12 +1167,23 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
 	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
         marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
-	station = g_strdup("Kyiv, Ukraine\n<span size=\"small\">Retro FM</span>");
+	station = g_strdup("Kyiv, Ukraine\n<span size=\"small\">Армія FM</span>");
 	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
 	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
 	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_a_color);
 	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
 	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 48.516667, 35.866667);
+	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
+	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
+	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
+	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
+        marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
+	station = g_strdup("Vienna, Austria\n<span size=\"small\">Radio Wien</span>");
+	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
+	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
+	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_a_color);
+	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
+	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 48.2429504, 16.3598378);
 	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
 	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
@@ -1173,6 +1206,17 @@ create_marker_layer (G_GNUC_UNUSED ChamplainView *view, ChamplainPathLayer **pat
 	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_b_color);
 	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
 	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 52.2518304, 21.0278848);
+	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
+	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
+	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */
+	g_signal_connect(CHAMPLAIN_LOCATION(marker), "button-press", G_CALLBACK(marker_function), station);
+	marker = champlain_label_new_from_file ("icons/emblem-generic.png", NULL);
+	station = g_strdup("Vatican City\n<span size=\"small\">Radio Vaticana</span>");
+	champlain_label_set_text (CHAMPLAIN_LABEL (marker), station);
+	champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
+	champlain_label_set_color (CHAMPLAIN_LABEL (marker), &city_b_color);
+	champlain_label_set_text_color (CHAMPLAIN_LABEL (marker), &text_color);
+	champlain_location_set_location (CHAMPLAIN_LOCATION (marker), 41.90175, 12.4389052);
 	champlain_marker_layer_add_marker (layer, CHAMPLAIN_MARKER (marker));
 	champlain_marker_animate_in(CHAMPLAIN_MARKER (marker));
 	/* champlain_path_layer_add_node (*path, CHAMPLAIN_LOCATION (marker)); */

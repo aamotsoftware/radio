@@ -1,3 +1,99 @@
+commit a02238d68adeda3fd7df7349769b07d9b5c572b1
+Author: Ole Aamot <ole.aamot@aamotinnovation.com>
+Date:   Sun Apr 5 19:36:14 2026 +0200
+
+    GNOME Radio version 76.0 (gnome-radio)
+
+ ChangeLog                                |  53 +++++
+ INSTALL                                  |  59 ++++--
+ Makefile                                 |  31 +--
+ Makefile.in                              |   5 +
+ NEWS                                     |   7 +
+ README                                   |   4 +-
+ aclocal.m4                               | 216 ++++++++++++++++++++
+ beamy/Makefile.in                        |   5 +
+ beamy/radio-beamy.c                      |   2 +-
+ configure                                | 339 +++++++++++++++++++++++++++++--
+ configure.ac                             |   2 +-
+ data/Makefile.in                         |   5 +
+ data/gnome-radio.appdata.xml.in          |   4 +-
+ data/gnome-radio.desktop.in.in           |   2 +-
+ data/icons/Makefile.in                   |   5 +
+ data/org.gnome.Radio.appdata.xml.in      |   4 +-
+ data/radio-beamy.appdata.xml.in          |   4 +-
+ doc/Makefile.in                          |   5 +
+ gnome-radio.spec                         |   6 +-
+ gnome-radio.spec.in                      |   6 +-
+ gtk/Makefile.in                          |   5 +
+ gtk/org.gnome.Radio.xml                  |  13 +-
+ help/Makefile.in                         |   5 +
+ icy/Makefile.in                          |   5 +
+ install-sh                               |   6 +-
+ man/Makefile.in                          |   5 +
+ src/Makefile.in                          |   5 +
+ src/gnome-radio-markers.c                |  26 ++-
+ src/gnome-radio.c                        |   4 +-
+ src/gnome-radio.xml                      |  13 +-
+ src/gtk-internet-radio-locator-markers.c |  47 ++++-
+ src/gtk-radio-markers.c                  |  47 ++++-
+ src/gtk-radio.c                          |   6 +-
+ src/gtk-radio.xml                        |  13 +-
+ src/internet-radio-locator.xml           |  13 +-
+ 35 files changed, 884 insertions(+), 93 deletions(-)
+
+commit c8f35a90b84cdb41109edec3038174721fb714da
+Author: Ole Aamot <ole.aamot@aamotinnovation.com>
+Date:   Sun Apr 5 16:11:35 2026 +0200
+
+    GNOME Radio version 75.0 (gnome-radio)
+
+ ChangeLog                           | 1588 ++++++++++++++---------------------
+ Makefile                            |   84 +-
+ Makefile.am                         |    2 +-
+ Makefile.in                         |   16 +-
+ NEWS                                |   20 +
+ README                              |    6 +-
+ aclocal.m4                          |  252 ------
+ beamy/Makefile.am                   |   27 +
+ beamy/Makefile.in                   |  733 ++++++++++++++++
+ beamy/radio-beamy.c                 |  113 +++
+ compile                             |   35 +-
+ configure                           |  390 +--------
+ configure.ac                        |    6 +-
+ data/Makefile.am                    |    4 +-
+ data/Makefile.in                    |   23 +-
+ data/gnome-radio.appdata.xml.in     |    4 +-
+ data/gnome-radio.desktop.in.in      |    2 +-
+ data/gtk-radio.appdata.xml.in       |    4 +-
+ data/gtk-radio.desktop.in.in        |    2 +-
+ data/icons/Makefile.am              |    3 +-
+ data/icons/Makefile.in              |   15 +-
+ data/icons/apps/radio-beamy.svg     |  111 +++
+ data/org.gnome.Radio.appdata.xml.in |    4 +-
+ data/radio-beamy.appdata.xml.in     |   25 +
+ data/radio-beamy.desktop            |    6 +
+ data/radio-beamy.desktop.in         |    6 +
+ data/radio-beamy.desktop.in.in      |    6 +
+ depcomp                             |    8 +-
+ doc/Makefile.in                     |   12 +-
+ gnome-radio.spec                    |   15 +-
+ gnome-radio.spec.in                 |   13 +
+ gtk/Makefile.in                     |   12 +-
+ gtk/org.gnome.Radio.xml             |    6 +-
+ help/Makefile.in                    |   12 +-
+ icy/Makefile.in                     |   12 +-
+ man/Makefile.in                     |   12 +-
+ man/gnome-radio.1                   |    2 +-
+ missing                             |    8 +-
+ po/POTFILES.in                      |    1 +
+ src/Makefile.in                     |   12 +-
+ src/gnome-radio.c                   |   51 +-
+ src/gnome-radio.xml                 |   10 +-
+ src/gtk-radio.c                     |    4 +-
+ src/gtk-radio.xml                   |    8 +-
+ src/internet-radio-locator.xml      |    8 +-
+ 45 files changed, 1918 insertions(+), 1775 deletions(-)
+
 commit 4c61df4d365afc17ad96e8888e853eb36441229c
 Author: Ole Aamot <ole.aamot@aamotinnovation.com>
 Date:   Fri Feb 27 03:54:13 2026 +0100

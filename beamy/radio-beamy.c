@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
     player = gst_element_factory_make("playbin", "player");
 
     GtkApplication *app = gtk_application_new(
-        "com.example.beamyradio",
+        "org.gnomeradio.beamyradio",
         G_APPLICATION_FLAGS_NONE
     );
 
