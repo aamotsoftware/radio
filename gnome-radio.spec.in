@@ -89,6 +89,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sun Jul 05 2026 Ole Aamot <ole@aamot.org> - 79.0-1
+- Stable gnome-radio 79.0 with P4 Radio Hele Norge (Norge)
+
 * Mon May 25 2026 Ole Aamot <ole@aamot.org> - 78.0-1
 - Stable gnome-radio 78.0 with Radio Vaticana (Vatican City)
 
