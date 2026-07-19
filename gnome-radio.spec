@@ -1,5 +1,5 @@
 Name:           gnome-radio
-Version:        79.0
+Version:        80.0
 Release:        1%{?dist}
 Summary:        Radio
 License:        GPLv3+
@@ -68,6 +68,8 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/org.gnome.Radio.xml
 %{_datadir}/%{name}/doc/AAMOT.txt.xz
 %{_datadir}/%{name}/doc/Aamot-2020.txt.xz
+%{_datadir}/doc/%{name}/radio.html
+%{_datadir}/doc/%{name}/studio.html
 %{_datadir}/%{name}/gnome-radio-48.0.dtd
 %{_datadir}/%{name}/gnome-radio.xml
 %{_metainfodir}/%{name}.appdata.xml
@@ -89,6 +91,9 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Sun Jul 19 2026 Ole Aamot <ole@aamot.org> - 80.0-1
+- Stable gnome-radio 80.0 with World Wide Web Studio
+
 * Sun Jul 05 2026 Ole Aamot <ole@aamot.org> - 79.0-1
 - Stable gnome-radio 79.0 with P4 Radio Hele Norge (Norge)
 

@@ -1,7 +1,7 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT([gnome-radio],[79.0])
+AC_INIT([gnome-radio],[80.0])
 AM_INIT_AUTOMAKE([-Wno-portability 1.11 no-dist-gzip dist-xz tar-ustar subdir-objects])
 AC_CONFIG_SRCDIR([src/gnome-radio.c])
 AC_CONFIG_HEADERS([config.h])
@@ -161,6 +161,7 @@ icy/Makefile
 man/Makefile
 po/Makefile.in
 src/Makefile
+www/Makefile
 gnome-radio.spec
 ])
 AC_OUTPUT

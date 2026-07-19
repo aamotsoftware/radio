@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GNOME Radio 80.0</title>
+
+<meta name="description"
+      content="GNOME Radio 80.0 - Free Internet Radio Software for GNOME">
+
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<style>
+:root{
+    --accent:#3584e4;
+    --bg:#f6f5f4;
+    --card:#ffffff;
+    --text:#241f31;
+    --muted:#77767b;
+    --border:#d5d3cf;
+    --radius:12px;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+header{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    padding:48px 24px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    font-size:2.5rem;
+}
+
+header p{
+    color:var(--muted);
+    margin-top:.5rem;
+}
+
+nav{
+    margin-top:1rem;
+}
+
+nav a{
+    color:var(--accent);
+    text-decoration:none;
+    margin:0 .75rem;
+    font-weight:600;
+}
+
+main{
+    max-width:1400px;
+    margin:auto;
+    padding:24px;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:420px 1fr;
+    gap:24px;
+}
+
+@media(max-width:900px){
+    .layout{
+        grid-template-columns:1fr;
+    }
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+    margin-bottom:24px;
+}
+
+h2{
+    margin-top:0;
+}
+
+label{
+    display:block;
+    margin-top:1rem;
+    margin-bottom:.4rem;
+}
+
+select,input,button{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    font-size:14px;
+}
+
+button{
+    margin-top:12px;
+    background:var(--accent);
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+}
+
+button:hover{
+    filter:brightness(1.05);
+}
+
+#status{
+    text-align:center;
+    color:var(--muted);
+    margin-top:12px;
+}
+
+#visualizer{
+    width:100%;
+    height:90px;
+    margin-top:16px;
+    background:#f0f0f0;
+    border-radius:10px;
+}
+
+#map{
+    height:300px;
+    border-radius:10px;
+    margin-top:16px;
+}
+
+pre{
+    overflow:auto;
+    background:#fafafa;
+    border:1px solid var(--border);
+    padding:1rem;
+    border-radius:8px;
+}
+
+code{
+    font-family:monospace;
+}
+
+footer{
+    text-align:center;
+    color:var(--muted);
+    padding:40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>📻 GNOME Radio 80.0</h1>
+    <p>Free Internet Radio Software for GNOME</p>
+
+    <nav>
+        <a href="#news">News</a>
+        <a href="#overview">Overview</a>
+        <a href="#screenshot">Screenshot</a>	
+        <a href="#install">Install</a>
+        <a href="#source">Source</a>
+        <a href="#help">Help</a>
+        <a href="#visualizer">Visualizer</a>
+        <a href="#audiomaps">Audio Maps</a>	
+    </nav>
+</header>
+
+<main>
+
+<div class="layout">
+
+    <aside>
+
+        <div class="card">
+          <h2>Radio Studio</h2>
+
+            <label for="stationSelect">Station</label>
+
+            <select id="stationSelect">
+  	        <option value="http://cdn0-47115-liveicecast0.dna.contentdelivery.net:80/sport_aac_h">  
+	   	    NRK Sport (Norway)
+	        </option>
+
+                <option value="http://cdn0-47115-liveicecast0.dna.contentdelivery.net:80/p1pluss_aac_h">
+                    NRK P1+
+                </option>
+
+		<option value="https://p4.p4groupaudio.com/P04_AH">
+		    P4 Radio Hele Norge (Norway)
+		</option>
+		
+                <option value="http://stream.live.vc.bbcmedia.co.uk/bbc_world_service">
+                    BBC World Service
+                </option>
+
+                <option value="https://npr-ice.streamguys1.com/live.mp3">
+                    NPR
+                </option>
+            </select>
+
+            <button id="playBtn">
+                ▶ Play
+            </button>
+
+            <div id="status">
+                Ready
+            </div>
+
+            <label for="volume">
+                Volume
+            </label>
+
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.5">
+
+            <div id="map"></div>
+        </div>
+
+    </aside>
+
+    <section>
+
+        <div class="card" id="news">
+            <h2>News</h2>
+            <ul>
+                <li>
+                    July 19, 2026:
+                    GNOME Radio 80.0 released.
+                </li>
+            </ul>
+        </div>
+
+        <div class="card" id="overview">
+            <h2>Overview</h2>
+
+            <p>
+                GNOME Radio is a free internet radio
+                application for GNOME featuring
+                international radio stations,
+                audio visualization and interactive maps.
+            </p>
+        </div>
+
+	<div class="card" id="screenshot">
+            <h2>Screenshot</h2>
+
+            <p>
+                <img src="screenshot.png" width="100%" alt="GNOME Radio is a free internet radio
+                application for GNOME featuring
+                international radio stations,
+                audio visualization and interactive maps." />
+            </p>
+        </div>
+
+        <div class="card" id="install">
+            <h2>Installation</h2>
+
+            <h3>Fedora</h3>
+
+            <pre><code>sudo dnf install gnome-radio</code></pre>
+        </div>
+
+        <div class="card" id="source">
+            <h2>Source Code</h2>
+
+            <pre><code>git clone https://github.com/aamotsoftware/radio.git
+cd radio
+./configure
+make
+sudo make install
+gnome-radio</code></pre>
+        </div>
+
+        <div class="card" id="help">
+            <h2>Help</h2>
+
+            <p>
+                See the <a href="https://www.gnomeradio.org/help/">GNOME Radio documentation
+                and user guide</a> for additional help.
+            </p>
+        </div>
+
+	<div class="card" id="visualizer">
+	    <h2>World Wide Web Visualizer</h2>
+	    
+	    <p>
+	      See <a href="https://www.gnomeradio.org/studio.html">GNOME Radio Studio</a> for World Wide Web Visualizer.
+	    </p>
+	</div>
+
+	<div class="card" id="audiomaps">
+	    <h2>Audio Maps</h2>
+
+	    <p>
+	      See <a href="https://www.gnomeradio.org/radio.html">GNOME Radio Audio Maps</a> for Free Audio Maps.
+	    </p>
+	</div>
+	
+    </section>
+
+</div>
+
+</main>
+
+<footer>
+    Copyright © 2026 GNOME Radio
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+const stations = {
+  "http://cdn0-47115-liveicecast0.dna.contentdelivery.net:80/sport_aac_h": {
+    name: "NRK Sport",
+    lat: 59.9139,
+    lon: 10.7522
+  },
+  "http://cdn0-47115-liveicecast0.dna.contentdelivery.net:80/p1pluss_aac_h":{
+    name:"NRK P1+",
+    lat:59.9139,
+    lon:10.7522
+  },
+
+  "https://p4.p4groupaudio.com/P04_AH": {
+    name: "P4 Radio Hele Norge",
+    lat: 61.1207,
+    lon: 10.4439
+  },
+
+  "http://stream.live.vc.bbcmedia.co.uk/bbc_world_service":{
+    name:"BBC World Service",
+    lat:51.5074,
+    lon:-0.1278
+  },
+  "https://npr-ice.streamguys1.com/live.mp3":{
+    name:"NPR",
+    lat:38.9072,
+    lon:-77.0369
+  }
+};
+
+const audio = new Audio();
+audio.crossOrigin = "anonymous";
+
+const playBtn =
+document.getElementById("playBtn");
+
+const stationSelect =
+document.getElementById("stationSelect");
+
+const volume =
+document.getElementById("volume");
+
+const status =
+document.getElementById("status");
+
+audio.src = stationSelect.value;
+audio.volume = volume.value;
+
+stationSelect.addEventListener(
+"change",
+()=>{
+    audio.src = stationSelect.value;
+    focusStation();
+}
+);
+
+volume.addEventListener(
+"input",
+()=>{
+    audio.volume = volume.value;
+}
+);
+
+playBtn.addEventListener(
+"click",
+async()=>{
+    try{
+        if(audio.paused){
+            await audio.play();
+        }else{
+            audio.pause();
+        }
+    }catch(e){
+        alert("Unable to play stream.");
+    }
+}
+);
+
+audio.addEventListener(
+"play",
+()=>{
+    playBtn.textContent="⏸ Pause";
+}
+);
+
+audio.addEventListener(
+"pause",
+()=>{
+    playBtn.textContent="▶ Play";
+}
+);
+
+const map =
+L.map("map").setView([55,10],3);
+
+L.tileLayer(
+"https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+{
+ attribution:"© OpenStreetMap"
+}
+).addTo(map);
+
+let marker;
+
+function focusStation(){
+
+ const station =
+ stations[stationSelect.value];
+
+ if(marker){
+   map.removeLayer(marker);
+ }
+
+ marker =
+ L.marker([
+   station.lat,
+   station.lon
+ ])
+ .addTo(map)
+ .bindPopup(station.name)
+ .openPopup();
+
+ map.flyTo(
+   [station.lat, station.lon],
+   5
+ );
+
+ status.textContent =
+ station.name;
+}
+
+focusStation();
+
+const canvas =
+document.getElementById("visualizer");
+
+const ctx =
+canvas.getContext("2d");
+
+function resize(){
+ canvas.width =
+ canvas.clientWidth;
+
+ canvas.height =
+ canvas.clientHeight;
+}
+
+window.addEventListener(
+"resize",
+resize
+);
+
+resize();
+
+</script>
+
+</body>
+</html>

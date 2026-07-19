@@ -385,7 +385,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = beamy data doc gtk help icy man src po
+SUBDIRS = beamy data doc gtk help icy man src po www
 EXTRA_DIST = m4/ChangeLog  \
 	AMFM \
 	AUTHORS \
