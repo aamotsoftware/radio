@@ -164,7 +164,7 @@ am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(srcdir)/gnome-radio.spec.in \
 	$(top_srcdir)/help/C/version.xml.in ABOUT-NLS AUTHORS COPYING \
 	ChangeLog INSTALL NEWS README THANKS TODO compile config.guess \
-	config.rpath config.sub depcomp install-sh ltmain.sh missing
+	config.rpath config.sub install-sh ltmain.sh missing
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 distdir = $(PACKAGE)-$(VERSION)
 top_distdir = $(distdir)
@@ -211,15 +211,15 @@ am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
 distcleancheck_listfiles = \
   find . \( -type f -a \! \
             \( -name .nfs* -o -name .smb* -o -name .__afs* \) \) -print
-ACLOCAL = ${SHELL} '/home/ole/Github/radio/missing' aclocal-1.18
+ACLOCAL = ${SHELL} '/home/ole/github/radio/missing' aclocal-1.18
 ALL_LINGUAS = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 AR = ar
 AS = as
-AUTOCONF = ${SHELL} '/home/ole/Github/radio/missing' autoconf
-AUTOHEADER = ${SHELL} '/home/ole/Github/radio/missing' autoheader
-AUTOMAKE = ${SHELL} '/home/ole/Github/radio/missing' automake-1.18
+AUTOCONF = ${SHELL} '/home/ole/github/radio/missing' autoconf
+AUTOHEADER = ${SHELL} '/home/ole/github/radio/missing' autoheader
+AUTOMAKE = ${SHELL} '/home/ole/github/radio/missing' automake-1.18
 AWK = gawk
 CATALOGS = 
 CATOBJEXT = .gmo
@@ -289,7 +289,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 LT_SYS_LIBRARY_PATH = 
-MAKEINFO = ${SHELL} '/home/ole/Github/radio/missing' makeinfo
+MAKEINFO = ${SHELL} '/home/ole/github/radio/missing' makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /usr/bin/mkdir -p
 MKINSTALLDIRS = .//mkinstalldirs
@@ -305,10 +305,10 @@ OTOOL64 =
 PACKAGE = gnome-radio
 PACKAGE_BUGREPORT = 
 PACKAGE_NAME = gnome-radio
-PACKAGE_STRING = gnome-radio 80.0
+PACKAGE_STRING = gnome-radio 83.0
 PACKAGE_TARNAME = gnome-radio
 PACKAGE_URL = 
-PACKAGE_VERSION = 80.0
+PACKAGE_VERSION = 83.0
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
@@ -323,15 +323,15 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = strip
 USE_NLS = yes
-VERSION = 80.0
+VERSION = 83.0
 XGETTEXT = /usr/bin/xgettext
 XMLLINT = xmllint
 YELP_LC_DIST = true
 YELP_LC_MEDIA_LINKS = true
-abs_builddir = /home/ole/Github/radio
-abs_srcdir = /home/ole/Github/radio
-abs_top_builddir = /home/ole/Github/radio
-abs_top_srcdir = /home/ole/Github/radio
+abs_builddir = /home/ole/github/radio
+abs_srcdir = /home/ole/github/radio
+abs_top_builddir = /home/ole/github/radio
+abs_top_srcdir = /home/ole/github/radio
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -362,7 +362,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/ole/Github/radio/install-sh
+install_sh = ${SHELL} /home/ole/github/radio/install-sh
 intltool__v_merge_options_ = $(intltool__v_merge_options_$(AM_DEFAULT_VERBOSITY))
 intltool__v_merge_options_0 = -q
 libdir = ${exec_prefix}/lib
@@ -385,7 +385,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-SUBDIRS = beamy data doc gtk help icy man src po www
+SUBDIRS = beamy data doc gtk help icy man oop src po www
 EXTRA_DIST = m4/ChangeLog  \
 	AMFM \
 	AUTHORS \
@@ -403,7 +403,8 @@ EXTRA_DIST = m4/ChangeLog  \
 	THANKS \
 	TODO \
 	UBUNTU \
-        gnome-radio.spec \
+	autogen.sh \
+	gnome-radio.spec \
         gnome-radio.spec.in
 
 DISTCLEANFILES = \

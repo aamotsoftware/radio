@@ -1,5 +1,5 @@
 Name:           gnome-radio
-Version:        80.0
+Version:        83.0
 Release:        1%{?dist}
 Summary:        Radio
 License:        GPLv3+
@@ -59,6 +59,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %license COPYING
 %{_bindir}/%{name}
 %{_bindir}/gnome-internet-radio-locator
+%{_bindir}/gnome-radio-oop
 %{_bindir}/gtk-radio
 %{_bindir}/gtk-internet-radio-locator
 %{_bindir}/org.gnome.Radio
@@ -69,6 +70,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_datadir}/%{name}/doc/AAMOT.txt.xz
 %{_datadir}/%{name}/doc/Aamot-2020.txt.xz
 %{_datadir}/doc/%{name}/radio.html
+%{_datadir}/doc/%{name}/radio-maps.html
 %{_datadir}/doc/%{name}/studio.html
 %{_datadir}/%{name}/gnome-radio-48.0.dtd
 %{_datadir}/%{name}/gnome-radio.xml
@@ -91,6 +93,15 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Tue Aug 11 2026 Ole Aamot <ole@aamot.org> - 83.0-1
+- Stable gnome-radio 83.0 with NRK P1 Rogaland (Stavanger, Norway)
+
+* Fri Jul 31 2026 Ole Aamot <ole@aamot.org> - 82.0-1
+- Stable gnome-radio 82.0 rebuilt from www.gnomeradio.org
+
+* Wed Jul 29 2026 Ole Aamot <ole@aamot.org> - 81.0-1
+- Stable gnome-radio 81.0 with C-SPAN, United States of America
+
 * Sun Jul 19 2026 Ole Aamot <ole@aamot.org> - 80.0-1
 - Stable gnome-radio 80.0 with World Wide Web Studio
 

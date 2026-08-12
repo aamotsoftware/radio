@@ -1,5 +1,5 @@
 pkgdocdir = $(docdir)/html
-dist_doc_DATA = radio.html studio.html
+dist_doc_DATA = radio.html radio-maps.html studio.html
 
 CLEANFILES = $(dist_doc_DATA)
 

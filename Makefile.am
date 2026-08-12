@@ -1,4 +1,4 @@
-SUBDIRS = beamy data doc gtk help icy man src po www
+SUBDIRS = beamy data doc gtk help icy man oop src po www
 
 datadir = @datadir@
 
@@ -19,7 +19,8 @@ EXTRA_DIST = m4/ChangeLog  \
 	THANKS \
 	TODO \
 	UBUNTU \
-        gnome-radio.spec \
+	autogen.sh \
+	gnome-radio.spec \
         gnome-radio.spec.in
 
 DISTCLEANFILES =                \
