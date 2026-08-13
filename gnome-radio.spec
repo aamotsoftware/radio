@@ -1,5 +1,5 @@
 Name:           gnome-radio
-Version:        83.0
+Version:        83.0.1
 Release:        1%{?dist}
 Summary:        Radio
 License:        GPLv3+
