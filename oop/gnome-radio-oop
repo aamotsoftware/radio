@@ -24,6 +24,8 @@ Funksjoner:
     - Toast-varsler for feil, lagring og sletting (Adw.ToastOverlay)
     - Import/eksport av stasjonsliste som JSON
     - MPRIS2-integrasjon: medietaster og GNOME Shell sitt now-playing-widget
+    - Kartvisning (OpenStreetMap via libshumate) med landmarkører for
+      hver stasjon som legges til i programmet
 
 Kjør med:
     python3 gnome_radio_oop.py
@@ -31,13 +33,17 @@ Kjør med:
 Avhengigheter (Debian/Ubuntu):
     sudo apt install python3-gi gir1.2-gtk-4.0 gir1.2-gstreamer-1.0 \
                       gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
-                      gstreamer1.0-plugins-ugly gstreamer1.0-libav
+                      gstreamer1.0-plugins-ugly gstreamer1.0-libav \
+                      gir1.2-shumate-1.0 libshumate-dev
 """
 
 from __future__ import annotations
 
 import json
 import logging
+import math
+import random
+import zlib
 from collections import deque
 from dataclasses import dataclass, field, asdict
 from datetime import datetime, timezone
@@ -50,8 +56,9 @@ import gi
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")
 gi.require_version("Gst", "1.0")
+gi.require_version("Shumate", "1.0")
 
-from gi.repository import Gtk, Adw, Gst, GLib, Gio, GObject  # noqa: E402
+from gi.repository import Gtk, Adw, Gst, GLib, Gio, GObject, Gdk, Shumate  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 logger = logging.getLogger("gnome-radio")
@@ -87,6 +94,140 @@ class Station:
             country=data.get("country", "Norge"),
             favorite=data.get("favorite", False),
         )
+
+
+# ---------------------------------------------------------------------------
+# Landkoordinater for kartvisning
+# ---------------------------------------------------------------------------
+# Stasjonens `country`-felt er fritekst på norsk (f.eks. «Norge», «Sverige»),
+# så oppslaget er nøkkelbasert på norske stedsnavn – ikke ISO-landkoder.
+# Verdiene er hovedstad/sentroide, brukt som posisjon for landmarkøren.
+# Utvid gjerne tabellen selv, eller koble på Nominatim (OSM sin geokodings-
+# tjeneste) dersom du vil ha presise per-stasjon-koordinater i stedet.
+
+COUNTRY_COORDINATES: dict[str, tuple[float, float]] = {
+    "norge": (59.9139, 10.7522),
+    "sverige": (59.3293, 18.0686),
+    "danmark": (55.6761, 12.5683),
+    "finland": (60.1699, 24.9384),
+    "island": (64.1466, -21.9426),
+    "tyskland": (52.5200, 13.4050),
+    "frankrike": (48.8566, 2.3522),
+    "storbritannia": (51.5074, -0.1278),
+    "nederland": (52.3676, 4.9041),
+    "spania": (40.4168, -3.7038),
+    "italia": (41.9028, 12.4964),
+    "polen": (52.2297, 21.0122),
+    "usa": (38.9072, -77.0369),
+    "japan": (35.6762, 139.6503),
+    "brasil": (-15.7939, -47.8828),
+    "australia": (-35.2809, 149.1300),
+    "canada": (45.4215, -75.6972),
+}
+
+DEFAULT_COORDINATES = (59.9139, 10.7522)  # Oslo – fallback for ukjente land
+
+
+def coordinates_for_country(country: str) -> tuple[float, float]:
+    """Slår opp en posisjon for landmarkøren, basert på stasjonens land."""
+    return COUNTRY_COORDINATES.get(country.strip().lower(), DEFAULT_COORDINATES)
+
+
+_KM_PER_DEGREE_LATITUDE = 111.32
+MARKER_JITTER_RADIUS_KM = 10.0
+
+
+def jittered_coordinates_for_station(station: "Station") -> tuple[float, float]:
+    """Regner ut en markørposisjon for stasjonen, spredt innenfor en
+    `MARKER_JITTER_RADIUS_KM`-radius rundt landets senterpunkt.
+
+    Uten dette havner alle stasjoner fra samme land nøyaktig på samme
+    koordinat (hovedstaden), og markørene overlapper hverandre på kartet.
+    Forskyvningen er deterministisk basert på strøm-URLen, slik at samme
+    stasjon alltid havner på samme sted – selv om kartet tegnes på nytt.
+    """
+    base_lat, base_lon = coordinates_for_country(station.country)
+
+    seed = zlib.crc32(station.url.encode("utf-8"))
+    rng = random.Random(seed)
+    angle = rng.uniform(0.0, 2 * math.pi)
+    # sqrt(uniform) gir jevnt fordelte punkter over hele sirkelens *areal*,
+    # i stedet for å klumpe seg opp mot sentrum.
+    radius_km = MARKER_JITTER_RADIUS_KM * math.sqrt(rng.uniform(0.0, 1.0))
+
+    delta_lat = (radius_km / _KM_PER_DEGREE_LATITUDE) * math.sin(angle)
+    km_per_degree_longitude = _KM_PER_DEGREE_LATITUDE * math.cos(math.radians(base_lat)) or 1.0
+    delta_lon = (radius_km / km_per_degree_longitude) * math.cos(angle)
+
+    return base_lat + delta_lat, base_lon + delta_lon
+
+
+# ---------------------------------------------------------------------------
+# Tango-paletten – brukt til å fargekode kartmarkørene
+# ---------------------------------------------------------------------------
+# Standard GNOME/Tango-farger (middels tone). Hver stasjon får en farge
+# deterministisk basert på strøm-URLen, slik at samme stasjon alltid
+# får samme farge, og at flere stasjoner enkelt kan skilles fra
+# hverandre på kartet selv når de deler land/koordinat.
+
+TANGO_PALETTE: list[tuple[str, str]] = [
+    ("butter", "#edd400"),
+    ("orange", "#f57900"),
+    ("chocolate", "#c17d11"),
+    ("chameleon", "#73d216"),
+    ("sky-blue", "#3465a4"),
+    ("plum", "#75507b"),
+    ("scarlet-red", "#cc0000"),
+    ("aluminium", "#888a85"),
+]
+
+
+def tango_color_for(key: str) -> tuple[str, str]:
+    """Returnerer (css-klassenavn, hex-farge) deterministisk for `key`,
+    slik at samme stasjon alltid får samme farge på tvers av kartredraw."""
+    index = zlib.crc32(key.encode("utf-8")) % len(TANGO_PALETTE)
+    return TANGO_PALETTE[index]
+
+
+_MARKER_CSS_LOADED = False
+
+
+def _ensure_marker_css_loaded() -> None:
+    """Laster CSS for kartmarkørene én gang per prosess."""
+    global _MARKER_CSS_LOADED
+    if _MARKER_CSS_LOADED:
+        return
+
+    rules = ["""
+        .station-marker-pin {
+            border-radius: 10px;
+            padding: 3px 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+        }
+        .station-marker-pin .marker-station-name {
+            font-weight: bold;
+            font-size: 11px;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        .station-marker-pin .marker-meta-info {
+            font-size: 9px;
+            color: #ffffff;
+            opacity: 0.9;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+        }
+    """]
+    for css_class, hex_color in TANGO_PALETTE:
+        rules.append(f".tango-{css_class} {{ background-color: {hex_color}; }}")
+
+    provider = Gtk.CssProvider()
+    provider.load_from_data("\n".join(rules).encode("utf-8"))
+    Gtk.StyleContext.add_provider_for_display(
+        Gdk.Display.get_default(),
+        provider,
+        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION,
+    )
+    _MARKER_CSS_LOADED = True
 
 
 class PlaybackState(Enum):
@@ -569,6 +710,117 @@ class MPRISService:
 # UI-lag
 # ---------------------------------------------------------------------------
 
+class StationMarker(Shumate.Marker):
+    """Én landmarkør på kartet – representerer én radiostasjon.
+
+    Markøren er en liten fargelagt «pin» bygget som et Shumate.Marker-barn,
+    med to tekstlinjer:
+        - metainfo (stasjonens sjanger)
+        - stasjonsnavnet
+
+    Fargen hentes deterministisk fra Tango-paletten basert på strøm-URLen,
+    så samme stasjon alltid får samme farge, og ulike stasjoner er lette
+    å skille fra hverandre på kartet. Favoritter får i tillegg et lite
+    stjerneikon foran metainfo-linjen.
+
+    Posisjonen er spredt innenfor `MARKER_JITTER_RADIUS_KM` rundt landets
+    senterpunkt (se `jittered_coordinates_for_station`), slik at flere
+    stasjoner fra samme land ikke havner oppå hverandre.
+
+    Et klikk på markøren starter avspilling av stasjonen, via
+    `on_activate`-callbacken som gis inn fra MapView/RadioWindow.
+    """
+
+    __gtype_name__ = "StationMarker"
+
+    def __init__(
+        self,
+        station: Station,
+        on_activate: Optional[Callable[[Station], None]] = None,
+    ) -> None:
+        super().__init__()
+        self.station = station
+        _ensure_marker_css_loaded()
+
+        lat, lon = jittered_coordinates_for_station(station)
+        self.set_location(lat, lon)
+
+        css_class, _hex_color = tango_color_for(station.url)
+
+        pin = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=1)
+        pin.add_css_class("station-marker-pin")
+        pin.add_css_class(f"tango-{css_class}")
+
+        meta_text = station.genre or "Ukjent"
+        if station.favorite:
+            meta_text = f"★ {meta_text}"
+        meta_label = Gtk.Label(label=meta_text, xalign=0)
+        meta_label.add_css_class("marker-meta-info")
+
+        name_label = Gtk.Label(label=station.name, xalign=0)
+        name_label.add_css_class("marker-station-name")
+        name_label.set_ellipsize(3)  # Pango.EllipsizeMode.END
+        name_label.set_max_width_chars(18)
+
+        pin.append(meta_label)
+        pin.append(name_label)
+        pin.set_tooltip_text(f"{station.name} – {station.genre} · {station.country}")
+
+        if on_activate is not None:
+            pin.add_css_class("activatable")
+            click_gesture = Gtk.GestureClick()
+            click_gesture.connect(
+                "released", lambda *_a: on_activate(station)
+            )
+            pin.add_controller(click_gesture)
+            pin.set_cursor(Gdk.Cursor.new_from_name("pointer"))
+
+        self.set_child(pin)
+
+
+class MapView(Gtk.Widget):
+    """Viser et OpenStreetMap-kart med en landmarkør for hver stasjon som
+    finnes i biblioteket. Rent visningsobjekt: kjenner ikke til
+    StationLibrary, bare til stasjonslisten den blir bedt om å tegne opp
+    via `set_stations()`.
+    """
+
+    __gtype_name__ = "MapView"
+
+    def __init__(self, on_station_activate: Optional[Callable[[Station], None]] = None) -> None:
+        super().__init__()
+        self.set_layout_manager(Gtk.BinLayout())
+        self._on_station_activate = on_station_activate
+
+        registry = Shumate.MapSourceRegistry.new_with_defaults()
+        osm_source = registry.get_by_id(Shumate.MAP_SOURCE_OSM_MAPNIK)
+
+        self._simple_map = Shumate.SimpleMap()
+        self._simple_map.set_map_source(osm_source)
+        self._simple_map.set_parent(self)
+
+        self._marker_layer = Shumate.MarkerLayer.new(self._simple_map.get_viewport())
+        self._simple_map.get_map().insert_layer_behind(self._marker_layer, None)
+
+        # Startvisning: sentrert over Norden, moderat zoom
+        viewport = self._simple_map.get_viewport()
+        viewport.set_zoom_level(4)
+        self._simple_map.get_map().center_on(*DEFAULT_COORDINATES)
+
+    def set_stations(self, stations: list[Station]) -> None:
+        """Tegner kartet på nytt med én markør per stasjon i listen."""
+        self._marker_layer.remove_all()
+        for station in stations:
+            self._marker_layer.add_marker(
+                StationMarker(station, on_activate=self._on_station_activate)
+            )
+
+    def focus_station(self, station: Station, zoom_level: float = 10.0) -> None:
+        """Panorer/zoom kartet til stasjonens faktiske markørposisjon."""
+        lat, lon = jittered_coordinates_for_station(station)
+        self._simple_map.get_map().go_to_full(lat, lon, zoom_level)
+
+
 class StationRow(Gtk.ListBoxRow):
     """Én rad i stasjonslisten. Rent visningsobjekt, ingen forretningslogikk."""
 
@@ -737,6 +989,11 @@ class RadioWindow(Adw.ApplicationWindow):
         self._favorites_toggle.connect("toggled", self._on_favorites_filter_toggled)
         header.pack_start(self._favorites_toggle)
 
+        self._map_toggle = Gtk.ToggleButton(icon_name="mark-location-symbolic")
+        self._map_toggle.set_tooltip_text("Vis kart over stasjoner")
+        self._map_toggle.connect("toggled", self._on_map_view_toggled)
+        header.pack_start(self._map_toggle)
+
         add_button = Gtk.Button(icon_name="list-add-symbolic")
         add_button.set_tooltip_text("Legg til stasjon")
         add_button.connect("clicked", self._on_add_station_clicked)
@@ -770,7 +1027,15 @@ class RadioWindow(Adw.ApplicationWindow):
         scroller.set_margin_top(8)
         scroller.set_margin_start(8)
         scroller.set_margin_end(8)
-        root.append(scroller)
+
+        self._map_view = MapView(on_station_activate=self._on_map_marker_activated)
+        self._map_view.set_vexpand(True)
+
+        self._content_stack = Gtk.Stack(vexpand=True)
+        self._content_stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
+        self._content_stack.add_named(scroller, "list")
+        self._content_stack.add_named(self._map_view, "map")
+        root.append(self._content_stack)
 
         root.append(self._build_playback_bar())
         toolbar_view.set_content(root)
@@ -839,6 +1104,10 @@ class RadioWindow(Adw.ApplicationWindow):
             )
             self._station_list.append(row)
 
+        # Kartet følger samme liste (søk/favorittfilter) som listevisningen,
+        # slik at nye stasjoner får en landmarkør så snart de legges til.
+        self._map_view.set_stations(stations)
+
     def _refresh_station_list(self) -> None:
         """Slår sammen gjeldende søk og favoritt-filter og tegner listen på nytt."""
         stations = self._library.search(self._current_search)
@@ -854,13 +1123,21 @@ class RadioWindow(Adw.ApplicationWindow):
         self._showing_favorites_only = button.get_active()
         self._refresh_station_list()
 
+    def _on_map_view_toggled(self, button: Gtk.ToggleButton) -> None:
+        self._content_stack.set_visible_child_name("map" if button.get_active() else "list")
+
     def _on_row_activated(self, _listbox, row: StationRow) -> None:
         self._player.play(row.station)
 
+    def _on_map_marker_activated(self, station: Station) -> None:
+        """Starter avspilling når en stasjon klikkes på kartet."""
+        self._player.play(station)
+
     def _on_favorite_toggle(self, station: Station) -> None:
         self._library.toggle_favorite(station)
-        if self._showing_favorites_only:
-            self._refresh_station_list()
+        # Alltid oppdater (ikke bare når favorittfilteret er på): kartmarkøren
+        # skal bytte ikon til stjerne så snart en stasjon merkes som favoritt.
+        self._refresh_station_list()
 
     def _on_add_station_clicked(self, _button: Gtk.Button) -> None:
         dialog = StationEditDialog(self, on_save=self._on_station_saved)
